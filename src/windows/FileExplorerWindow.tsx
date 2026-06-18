@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { fileSystem } from '../files/fileData';
 import { Folder, ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 type FolderAppId = keyof typeof fileSystem;
 
@@ -34,6 +35,27 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
           className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
+          <div className="flex flex-col items-center mb-8">
+            <motion.div
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="relative"
+            >
+              <div className="absolute inset-0 rounded-full bg-white/20 blur-xl animate-pulse" />
+              <img
+                src="/pfp.jpg"
+                alt="Profile"
+                className="w-32 h-32 rounded-full object-cover border-2 border-white/50 shadow-[0_0_20px_rgba(255,255,255,0.3)] relative z-10"
+              />
+            </motion.div>
+          </div>
+
           <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
             <p>Hi! I'm Fardin FN, an IT student passionate about building intelligent software that combines AI, modern web technologies, and exceptional user experiences.</p>
             <p>I enjoy developing full-stack applications, experimenting with AI agents, contributing to open-source projects, and participating in hackathons where creativity meets problem solving.</p>
@@ -49,6 +71,27 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
               <li>• Software Engineering</li>
             </ul>
             <p>My long-term goal is to build products that solve real-world problems and make technology more accessible to everyone.</p>
+          </div>
+        </div>
+      )}
+      {folderId === 'gallery' && (
+        <div className="h-full w-full overflow-y-auto ghost-scrollbar p-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {fileSystem.gallery.entries.map((entry, i) => (
+              <motion.div
+                key={entry.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
+                className="aspect-square rounded-lg overflow-hidden border border-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all group"
+              >
+                <img
+                  src={entry.fields.url as string}
+                  alt={entry.description}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       )}
@@ -380,7 +423,7 @@ function RootExplorer({ onNavigate }: { onNavigate: (folderId: FolderAppId) => v
   const folders: FolderAppId[] = [
     'about', 'projects', 'skills', 'hackathons', 
     'experience', 'education', 'certificates', 'blogs', 
-    'contact', 'resume'
+    'contact', 'resume', 'gallery'
   ];
 
   return (
