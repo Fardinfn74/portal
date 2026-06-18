@@ -385,7 +385,56 @@ export const fileSystem: Record<Exclude<AppId, 'terminal' | 'games' | 'browser'>
     label: 'Gallery',
     path: '/home/fardin/Pictures',
     summary: 'Photos and screenshots.',
-    entries: [],
+    entries: [
+      {
+        name: 'image_01.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 1',
+        fields: { url: '/gallery/image_01.jpg' },
+      },
+      {
+        name: 'image_02.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 2',
+        fields: { url: '/gallery/image_02.jpg' },
+      },
+      {
+        name: 'image_03.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 3',
+        fields: { url: '/gallery/image_03.jpg' },
+      },
+      {
+        name: 'image_04.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 4',
+        fields: { url: '/gallery/image_04.jpg' },
+      },
+      {
+        name: 'image_05.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 5',
+        fields: { url: '/gallery/image_05.jpg' },
+      },
+      {
+        name: 'image_06.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 6',
+        fields: { url: '/gallery/image_06.jpg' },
+      },
+      {
+        name: 'image_07.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 7',
+        fields: { url: '/gallery/image_07.jpg' },
+      },
+      {
+        name: 'image_08.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 8',
+        fields: { url: '/gallery/image_08.jpg' },
+      },
+    ],
   },
   trash: {
     label: 'Trash',
