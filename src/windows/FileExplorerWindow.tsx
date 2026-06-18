@@ -34,9 +34,9 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
           className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
-          <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] tracking-wide">
+          <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
             <p>Hi! I'm Fardin FN, an IT student passionate about building intelligent software that combines AI, modern web technologies, and exceptional user experiences.</p>
-            <p>I enjoy developing full-stack applications, experimenting with AI agents, contributing to open-source projects, and participating in national hackathons where creativity meets problem solving.</p>
+            <p>I enjoy developing full-stack applications, experimenting with AI agents, contributing to open-source projects, and participating in hackathons where creativity meets problem solving.</p>
             <p>Outside programming, I enjoy gardening, traveling, learning new technologies, exploring Linux ecosystems, and continuously improving my skills.</p>
             <p>Currently I'm focusing on:</p>
             <ul className="list-none space-y-2 ml-4">
@@ -57,7 +57,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
           className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
-          <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] tracking-wide">
+          <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
             <p>Currently building personal projects, contributing to open-source software, and continuously learning modern technologies.</p>
             <p className="font-bold text-xl mt-6">Areas of Experience</p>
             <ul className="list-none space-y-3 ml-4">
@@ -77,7 +77,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
           className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
-          <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] tracking-wide">
+          <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
             <div className="space-y-1">
               <p className="text-2xl font-bold">Bachelor's Degree</p>
               <p className="text-xl">Information Technology (IT)</p>
@@ -99,7 +99,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
           className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
-          <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] tracking-wide">
+          <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
             <p>I enjoy sharing my learning journey, development experiences, hackathon stories, AI experiments, Linux customization, and programming tips.</p>
             <p className="font-bold text-xl mt-6">Topics</p>
             <ul className="list-none space-y-3 ml-4">
@@ -119,57 +119,52 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
           className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
-          <div className="text-white text-[1.1rem] leading-relaxed space-y-6 drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] tracking-wide">
+          <div className="text-white text-[1.1rem] leading-relaxed space-y-6 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
             <p className="text-2xl font-bold">Let's build something amazing together!</p>
 
-            <div className="flex flex-col gap-4 mt-4">
+            <div className="flex flex-wrap gap-4 mt-6">
               <a
                 href="mailto:fardin29bd@gmail.com"
-                className="flex items-center gap-3 hover:text-blue-300 transition-colors group"
+                className="px-6 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 group"
               >
-                <span className="w-8">📧</span>
-                <span className="font-bold">Email:</span>
-                <span className="underline decoration-white/30 group-hover:decoration-blue-300">fardin29bd@gmail.com</span>
+                <span>📧</span>
+                <span className="font-bold">Email</span>
               </a>
               <a
                 href="https://github.com/Fardinfn74"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 hover:text-blue-300 transition-colors group"
+                className="px-6 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 group"
               >
-                <span className="w-8">🐙</span>
-                <span className="font-bold">GitHub:</span>
-                <span className="underline decoration-white/30 group-hover:decoration-blue-300">github.com/Fardinfn74</span>
+                <span>🐙</span>
+                <span className="font-bold">GitHub</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/fardin-fn-684556211"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 hover:text-blue-300 transition-colors group"
+                className="px-6 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 group"
               >
-                <span className="w-8">💼</span>
-                <span className="font-bold">LinkedIn:</span>
-                <span className="underline decoration-white/30 group-hover:decoration-blue-300">linkedin.com/in/fardin-fn-684556211</span>
+                <span>💼</span>
+                <span className="font-bold">LinkedIn</span>
               </a>
               <a
                 href="https://www.instagram.com/its_fardinn_?igsh=NDYzaXN3M3VteGJ4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 hover:text-blue-300 transition-colors group"
+                className="px-6 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 group"
               >
-                <span className="w-8">📸</span>
-                <span className="font-bold">Instagram:</span>
-                <span className="underline decoration-white/30 group-hover:decoration-blue-300">@its_fardinn_</span>
+                <span>📸</span>
+                <span className="font-bold">Instagram</span>
               </a>
               <a
                 href="https://discord.gg/GF9W7TFt"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 hover:text-blue-300 transition-colors group"
+                className="px-6 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 group"
               >
-                <span className="w-8">🌐</span>
-                <span className="font-bold">Discord:</span>
-                <span className="underline decoration-white/30 group-hover:decoration-blue-300">Join my Server</span>
+                <span>🌐</span>
+                <span className="font-bold">Discord</span>
               </a>
             </div>
 
@@ -182,12 +177,136 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
           </div>
         </div>
       )}
+      {folderId === 'projects' && (
+        <div
+          className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
+          style={{ fontFamily: '"Times New Roman", Times, serif' }}
+        >
+          <div className="text-white text-[1.1rem] leading-relaxed space-y-8 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
+            <section className="space-y-4">
+              <h1 className="text-4xl font-bold">🌙 Luna AI</h1>
+              <h3 className="text-xl font-semibold italic text-white/80">Your Intelligent Personal AI Assistant</h3>
+              <p><strong>Status:</strong> 🚀 Active Development</p>
+              <p>Luna AI is a next-generation personal AI assistant designed to help users with everyday tasks, learning, programming, productivity, and intelligent conversations. Built with modern AI technologies, Luna provides a natural and personalized experience while acting as a reliable digital companion.</p>
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold">Highlights</h3>
+                <ul className="list-none space-y-1 ml-4">
+                  <li>🤖 Natural, human-like conversations</li>
+                  <li>💻 Programming & debugging assistance</li>
+                  <li>📚 Learning and educational support</li>
+                  <li>📝 Writing, summarization & research</li>
+                  <li>🌐 Web-assisted responses</li>
+                  <li>⚡ Fast and responsive interface</li>
+                  <li>🎯 Personalized user experience</li>
+                  <li>🔒 Privacy-focused design</li>
+                </ul>
+              </div>
+              <p><strong>Tech Stack</strong></p>
+              <p className="text-white/70">React • Next.js • TypeScript • AI APIs • Tailwind CSS • Node.js</p>
+            </section>
+
+            <hr className="border-white/10" />
+
+            <section className="space-y-4">
+              <h1 className="text-4xl font-bold">💻 Luna Studio</h1>
+              <h3 className="text-xl font-semibold italic text-white/80">Autonomous AI Code Editor</h3>
+              <p><strong>Status:</strong> 🚀 Active Development</p>
+              <p>Luna Studio is an AI-powered agentic code editor built to redefine the software development experience. Inspired by tools like Codex and Cursor, Luna Studio goes beyond code completion by understanding entire projects, planning implementations, editing multiple files, debugging issues, and assisting developers throughout the complete development lifecycle.</p>
+              <p>The vision is to create an intelligent development environment where AI acts as a true software engineering partner rather than just an autocomplete tool.</p>
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold">Features</h3>
+                <ul className="list-none space-y-1 ml-4">
+                  <li>🧠 Autonomous AI coding agents</li>
+                  <li>📂 Full project understanding</li>
+                  <li>⚙️ Multi-file code editing</li>
+                  <li>🐞 Intelligent debugging</li>
+                  <li>✨ Code generation & refactoring</li>
+                  <li>📦 Project scaffolding</li>
+                  <li>🔍 Codebase search & analysis</li>
+                  <li>🚀 AI-assisted development workflow</li>
+                </ul>
+              </div>
+              <p><strong>Tech Stack</strong></p>
+              <p className="text-white/70">Electron • React • TypeScript • Monaco Editor • AI APIs • Node.js</p>
+            </section>
+
+            <hr className="border-white/10" />
+
+            <section className="space-y-4">
+              <h1 className="text-4xl font-bold">🎓 Learnova AI</h1>
+              <h3 className="text-xl font-semibold italic text-white/80">Personalized AI Learning Platform</h3>
+              <p><strong>Status:</strong> 🚀 Active Development</p>
+              <p>Learnova AI is an intelligent tutoring platform designed to make education more interactive, personalized, and accessible. It adapts to each learner's needs, providing explanations, quizzes, study plans, and AI-powered guidance across multiple subjects.</p>
+              <p>The goal of Learnova is to create an AI mentor that helps students learn more effectively through personalized teaching rather than one-size-fits-all education.</p>
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold">Features</h3>
+                <ul className="list-none space-y-1 ml-4">
+                  <li>📖 AI-powered tutoring</li>
+                  <li>🧠 Personalized learning paths</li>
+                  <li>📝 Quiz & assessment generation</li>
+                  <li>📚 Subject explanations</li>
+                  <li>💡 Step-by-step problem solving</li>
+                  <li>📅 Smart study planner</li>
+                  <li>📊 Learning progress tracking</li>
+                  <li>🎯 Adaptive recommendations</li>
+                </ul>
+              </div>
+              <p><strong>Tech Stack</strong></p>
+              <p className="text-white/70">React • Next.js • AI APIs • TypeScript • Firebase • Tailwind CSS</p>
+            </section>
+
+            <hr className="border-white/10" />
+
+            <section className="space-y-4">
+              <h1 className="text-4xl font-bold">👻 GhostOS</h1>
+              <h3 className="text-xl font-semibold italic text-white/80">Linux-Inspired Interactive Developer Portfolio</h3>
+              <p><strong>Status:</strong> 🚀 Active Development</p>
+              <p>GhostOS transforms a traditional portfolio into an immersive Linux desktop experience. Visitors enter through a cinematic boot sequence and login screen before exploring an interactive operating system featuring projects, skills, experience, and achievements.</p>
+              <p>Integrated into GhostOS is <strong>Pacman</strong>, an intelligent AI assistant that helps visitors navigate the system, answer questions about my work, and provide an engaging portfolio experience.</p>
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold">Features</h3>
+                <ul className="list-none space-y-1 ml-4">
+                  <li>🖥️ Interactive Linux desktop</li>
+                  <li>🤖 Pacman AI assistant</li>
+                  <li>🔐 Cinematic login experience</li>
+                  <li>📁 Functional desktop applications</li>
+                  <li>💬 AI-powered portfolio navigation</li>
+                  <li>✨ Smooth animations & modern UI</li>
+                  <li>📱 Responsive experience</li>
+                </ul>
+              </div>
+              <p><strong>Tech Stack</strong></p>
+              <p className="text-white/70">Next.js • React • Tailwind CSS • TypeScript • Framer Motion • AI APIs</p>
+            </section>
+
+            <hr className="border-white/10" />
+
+            <section className="space-y-4 pb-8">
+              <h1 className="text-4xl font-bold">🔭 Upcoming Projects</h1>
+              <p>I enjoy building ambitious software that combines Artificial Intelligence, modern web technologies, and intuitive user experiences.</p>
+              <div className="space-y-2">
+                <h3 className="text-xl font-bold">Planned Projects</h3>
+                <ul className="list-none space-y-1 ml-4">
+                  <li>🧩 Open-source AI tools</li>
+                  <li>🐧 Linux productivity utilities</li>
+                  <li>🔐 Cybersecurity learning platform</li>
+                  <li>☁️ Cloud-native applications</li>
+                  <li>📦 Developer productivity software</li>
+                  <li>🤖 Autonomous AI agents</li>
+                  <li>🌍 Intelligent web applications</li>
+                  <li>💡 Experimental AI research projects</li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+      )}
       {folderId === 'skills' && (
         <div 
           className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
-          <div className="text-white text-[1.1rem] leading-relaxed drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] tracking-wide whitespace-pre-wrap">
+          <div className="text-white text-[1.1rem] leading-relaxed drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide whitespace-pre-wrap">
             {`Programming Languages
 🐍 Python
 🌐 JavaScript
@@ -237,8 +356,8 @@ Tools
           className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
-          <div className="text-white text-[1.1rem] leading-relaxed drop-shadow-[0_0_12px_rgba(255,255,255,0.8)] tracking-wide whitespace-pre-wrap">
-            {`I actively participate in national hackathons where I collaborate with talented developers, solve real-world challenges, and rapidly build innovative products.
+          <div className="text-white text-[1.1rem] leading-relaxed drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide whitespace-pre-wrap">
+            {`I actively participate in hackathons where I collaborate with talented developers, solve real-world challenges, and rapidly build innovative products.
 
 Highlights
 
