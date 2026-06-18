@@ -189,57 +189,50 @@ export const fileSystem: Record<Exclude<AppId, 'terminal' | 'games' | 'browser'>
   experience: {
     label: 'Experience',
     path: '/home/fardin/Desktop/Experience',
-    summary: 'Experience entries are sample-ready and easy to replace with real history.',
+    summary: 'Summary of professional experience and focus areas.',
     entries: [
       {
-        name: 'freelance-frontend.json',
+        name: 'current-focus.json',
         type: 'experience',
-        description: 'Built responsive landing pages and dashboards for small teams and student projects.',
+        description: 'Current activities and areas of experience.',
         fields: {
-          role: 'Frontend Developer',
-          period: '2024 - present',
-          impact: ['React UI builds', 'component cleanup', 'deployment-ready Vite projects'],
+          status: 'Currently building personal projects, contributing to open-source software, and continuously learning modern technologies.',
+          areas: [
+            'Full Stack Development',
+            'AI Integrations',
+            'Web Development',
+            'Open Source Contributions',
+            'Rapid Product Prototyping',
+            'Team Collaboration',
+            'Technical Presentations'
+          ],
         },
-        tags: ['frontend', 'client-work'],
-      },
-      {
-        name: 'security-lab-assistant.json',
-        type: 'experience',
-        description: 'Maintained personal security labs and documented safe learning workflows.',
-        fields: {
-          role: 'Security Lab Learner',
-          period: '2023 - present',
-          impact: ['Linux practice', 'CTF notes', 'tool comparison writeups'],
-        },
-        tags: ['security', 'learning'],
+        tags: ['experience', 'focus'],
       },
     ],
   },
   education: {
     label: 'Education',
     path: '/home/fardin/Desktop/Education',
-    summary: 'Academic profile for a CSE-focused portfolio.',
+    summary: 'Academic background and focused areas of study.',
     entries: [
       {
-        name: 'cse-degree.json',
+        name: 'degree.json',
         type: 'education',
-        description: 'Computer Science and Engineering academic path.',
+        description: 'Bachelor\'s Degree information.',
         fields: {
-          program: 'BSc in Computer Science and Engineering',
-          status: 'student',
-          coursework: ['data structures', 'algorithms', 'database systems', 'computer networks', 'software engineering'],
+          degree: 'Bachelor\'s Degree',
+          major: 'Information Technology (IT)',
+          focused_areas: [
+            'Software Engineering',
+            'Web Development',
+            'AI & Machine Learning',
+            'Database Systems',
+            'Cloud Computing',
+            'Problem Solving'
+          ],
         },
-        tags: ['cse', 'university'],
-      },
-      {
-        name: 'self-learning-roadmap.json',
-        type: 'education',
-        description: 'Parallel skill roadmap outside class.',
-        fields: {
-          topics: ['React architecture', 'TypeScript', 'Linux fundamentals', 'web security', 'UI animation'],
-          routine: 'build small projects, write notes, ship demos',
-        },
-        tags: ['roadmap'],
+        tags: ['education', 'degree'],
       },
     ],
   },
@@ -286,66 +279,47 @@ export const fileSystem: Record<Exclude<AppId, 'terminal' | 'games' | 'browser'>
   blogs: {
     label: 'Blogs',
     path: '/home/fardin/Desktop/Blogs',
-    summary: 'Draft blog ideas and portfolio-friendly writing samples.',
+    summary: 'Technical articles and project write-ups.',
     entries: [
       {
-        name: 'building-a-browser-os.md',
-        type: 'blog-draft',
-        description: 'Notes on designing GhostOS as a desktop instead of a normal site.',
+        name: 'topics.json',
+        type: 'blog-info',
+        description: 'Topics covered in my blogs.',
         fields: {
-          status: 'draft',
-          themes: ['state modeling', 'window manager', 'interactive portfolio UX'],
+          intro: 'I enjoy sharing my learning journey, development experiences, hackathon stories, AI experiments, Linux customization, and programming tips.',
+          topics: [
+            'Artificial Intelligence',
+            'Linux',
+            'Programming',
+            'Web Development',
+            'Hackathons',
+            'Productivity'
+          ],
+          note: 'Stay tuned—more technical articles and project write-ups are on the way.'
         },
-        tags: ['react', 'architecture'],
-      },
-      {
-        name: 'ctf-notes-for-beginners.md',
-        type: 'blog-draft',
-        description: 'A beginner-friendly guide to keeping clean CTF notes and writeups.',
-        fields: {
-          status: 'outline',
-          themes: ['web challenges', 'payload logging', 'ethical boundaries'],
-        },
-        tags: ['ctf', 'security'],
-      },
-      {
-        name: 'why-typescript-helps-ui-state.md',
-        type: 'blog-draft',
-        description: 'Practical examples of making UI state harder to break.',
-        fields: {
-          status: 'draft',
-          themes: ['types', 'state machines', 'component contracts'],
-        },
-        tags: ['typescript', 'frontend'],
+        tags: ['blog', 'topics'],
       },
     ],
   },
   contact: {
     label: 'Contact',
     path: '/home/fardin/Desktop/Contact',
-    summary: 'Contact routes for portfolio visitors.',
+    summary: 'Connect with me through various platforms.',
     entries: [
       {
-        name: 'contact-card.json',
+        name: 'connect.json',
         type: 'contact',
-        description: 'Primary contact information.',
+        description: 'Ways to reach out.',
         fields: {
-          email: 'fardin@example.com',
-          github: 'github.com/fardin',
-          linkedin: 'linkedin.com/in/fardin',
-          availability: 'open to internships, frontend projects, and hackathon teams',
+          message: 'Let\'s build something amazing together!',
+          email: 'fardin29bd@gmail.com',
+          github: 'https://github.com/Fardinfn74',
+          linkedin: 'www.linkedin.com/in/fardin-fn-684556211',
+          instagram: 'https://www.instagram.com/its_fardinn_?igsh=NDYzaXN3M3VteGJ4',
+          discord: 'https://discord.gg/GF9W7TFt',
+          footer: 'Whether you have a project idea, collaboration opportunity, internship, hackathon invitation, or just want to connect, feel free to reach out. I\'ll get back to you as soon as possible.'
         },
-        tags: ['contact'],
-      },
-      {
-        name: 'message-template.txt',
-        type: 'text/plain',
-        description: 'Suggested message format for viewers.',
-        fields: {
-          subject: 'Portfolio opportunity',
-          include: ['project context', 'timeline', 'preferred contact channel'],
-        },
-        tags: ['template'],
+        tags: ['contact', 'social'],
       },
     ],
   },
