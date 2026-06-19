@@ -17,7 +17,24 @@ export type FileBundle = {
   entries: FileEntry[];
 };
 
-export const fileSystem: Record<Exclude<AppId, 'terminal' | 'games' | 'browser'>, FileBundle> = {
+export const fileSystem: Record<
+  Exclude<
+    AppId,
+    | 'terminal'
+    | 'games'
+    | 'browser'
+    | 'cert_01'
+    | 'cert_02'
+    | 'cert_03'
+    | 'cert_04'
+    | 'cert_05'
+    | 'cert_06'
+    | 'cert_07'
+    | 'cert_08'
+    | 'imageViewer'
+  >,
+  FileBundle
+> = {
   about: {
     label: 'About_Me',
     path: '/home/fardin/Desktop/About_Me',
