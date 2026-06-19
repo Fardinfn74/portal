@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 import { appRegistry } from '../apps/appRegistry';
-import type { AppId, GhostWindow, Position, Size, Toast } from '../core/types';
+import type { AppId, PacWindow, Position, Size, Toast } from '../core/types';
 import { createId } from '../utils/id';
 import { sounds } from '../utils/sound';
 
-type GhostStore = {
-  windows: GhostWindow[];
+type PacStore = {
+  windows: PacWindow[];
   nextZIndex: number;
   developerMode: boolean;
   toasts: Toast[];
@@ -26,7 +26,7 @@ type GhostStore = {
   setDragonSpeed: (speed: number) => void;
 };
 
-const buildWindow = (appId: AppId, zIndex: number, openCount: number): GhostWindow => {
+const buildWindow = (appId: AppId, zIndex: number, openCount: number): PacWindow => {
   const app = appRegistry[appId];
   const offset = openCount % 6;
 
@@ -45,13 +45,13 @@ const buildWindow = (appId: AppId, zIndex: number, openCount: number): GhostWind
   };
 };
 
-export const useGhostStore = create<GhostStore>((set, get) => ({
+export const usePacStore = create<PacStore>((set, get) => ({
   windows: [],
   nextZIndex: 10,
   developerMode: false,
   toasts: [],
-  dragonEnabled: typeof window !== 'undefined' ? localStorage.getItem('ghost_dragon_enabled') !== 'false' : true,
-  dragonSpeed: (typeof window !== 'undefined' && Number(localStorage.getItem('ghost_dragon_speed'))) || 8,
+  dragonEnabled: typeof window !== 'undefined' ? localStorage.getItem('pac_man_enabled') !== 'false' : true,
+  dragonSpeed: (typeof window !== 'undefined' && Number(localStorage.getItem('pac_man_speed'))) || 8,
 
   openApp: (appId) => {
     const state = get();
@@ -177,14 +177,14 @@ export const useGhostStore = create<GhostStore>((set, get) => ({
 
   setDragonEnabled: (dragonEnabled) => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('ghost_dragon_enabled', String(dragonEnabled));
+      localStorage.setItem('pac_man_enabled', String(dragonEnabled));
     }
     set({ dragonEnabled });
   },
 
   setDragonSpeed: (dragonSpeed) => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('ghost_dragon_speed', String(dragonSpeed));
+      localStorage.setItem('pac_man_speed', String(dragonSpeed));
     }
     set({ dragonSpeed });
   },

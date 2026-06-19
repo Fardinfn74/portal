@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Cloud, Sun, Battery, HardDrive, Cpu, Activity, Paintbrush, Sparkles } from 'lucide-react';
-import { useGhostStore } from '../../store/useGhostStore';
+import { usePacStore } from '../../store/usePacStore';
 
 export function WidgetsPanel() {
   const [time, setTime] = useState(new Date());
 
-  const dragonEnabled = useGhostStore((state) => state.dragonEnabled);
-  const dragonSpeed = useGhostStore((state) => state.dragonSpeed);
-  const setDragonEnabled = useGhostStore((state) => state.setDragonEnabled);
-  const setDragonSpeed = useGhostStore((state) => state.setDragonSpeed);
+  const dragonEnabled = usePacStore((state) => state.dragonEnabled);
+  const dragonSpeed = usePacStore((state) => state.dragonSpeed);
+  const setDragonEnabled = usePacStore((state) => state.setDragonEnabled);
+  const setDragonSpeed = usePacStore((state) => state.setDragonSpeed);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);

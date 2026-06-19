@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react';
 import { Terminal } from '@xterm/xterm';
 import '@xterm/xterm/css/xterm.css';
 import { desktopItems } from '../files/desktopItems';
-import { useGhostStore } from '../store/useGhostStore';
-import { ghostDragonAscii } from '../assets/ghostAscii';
+import { usePacStore } from '../store/usePacStore';
+import { pacManAscii } from '../assets/pacAscii';
 import type { AppId } from '../core/types';
 
-const prompt = '\x1b[37mfardin@ghostos\x1b[0m:\x1b[37m~\x1b[0m$ ';
+const prompt = '\x1b[37mfardin@pacos\x1b[0m:\x1b[37m~\x1b[0m$ ';
 
 const appAliases: Record<string, AppId> = {
   projects: 'projects',
@@ -26,7 +26,7 @@ export function TerminalApp() {
   const inputRef = useRef('');
   const lockedRef = useRef(false);
   const timersRef = useRef<number[]>([]);
-  const openApp = useGhostStore((state) => state.openApp);
+  const openApp = usePacStore((state) => state.openApp);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -69,7 +69,7 @@ export function TerminalApp() {
 
     const writeHelp = () => {
       term.writeln('Available commands:');
-      term.writeln('  neofetch        show GhostOS system info');
+      term.writeln('  neofetch        show PacOS system info');
       term.writeln('  ls              list desktop items');
       term.writeln('  cat about.txt   print short bio');
       term.writeln('  clear           clear terminal');
@@ -85,7 +85,7 @@ export function TerminalApp() {
     const runHack = () => {
       lockedRef.current = true;
       const lines = [
-        'starting harmless GhostOS lab animation...',
+        'starting harmless PacOS lab animation...',
         'scanning 127.0.0.1 ports: 22 closed, 80 simulated, 443 simulated',
         'loading matrix payload: [##########] 100%',
         'decrypting portfolio vault: ACCESS VISUAL ONLY',
@@ -95,7 +95,7 @@ export function TerminalApp() {
 
       lines.forEach((line, index) => {
         const timer = window.setTimeout(() => {
-          term.writeln(`\x1b[32m[ghost-lab]\x1b[0m ${line}`);
+          term.writeln(`\x1b[32m[pac-lab]\x1b[0m ${line}`);
           if (index === lines.length - 1) {
             lockedRef.current = false;
             writePrompt();
@@ -123,11 +123,11 @@ export function TerminalApp() {
       if (normalized === 'help') {
         writeHelp();
       } else if (normalized === 'neofetch') {
-        term.writeln('\x1b[37m' + ghostDragonAscii + '\x1b[0m');
-        term.writeln('\x1b[37mOS:\x1b[0m GhostOS');
+        term.writeln('\x1b[37m' + pacManAscii + '\x1b[0m');
+        term.writeln('\x1b[37mOS:\x1b[0m PacOS');
         term.writeln('\x1b[37mUser:\x1b[0m Fardin');
         term.writeln('\x1b[37mRole:\x1b[0m CSE student / frontend engineer');
-        term.writeln('\x1b[37mShell:\x1b[0m ghostsh');
+        term.writeln('\x1b[37mShell:\x1b[0m pacsh');
         term.writeln('\x1b[37mStack:\x1b[0m React, TypeScript, Tailwind, Zustand, xterm.js');
       } else if (normalized === 'ls') {
         term.writeln(desktopItems.map((item) => `${item.label}${item.kind === 'folder' ? '/' : ''}`).join('  '));
@@ -136,11 +136,11 @@ export function TerminalApp() {
       } else if (normalized === 'whoami') {
         term.writeln('visitor');
       } else if (normalized === 'sudo whoami') {
-        term.writeln('\x1b[31mauthentication failed:\x1b[0m visitor is not in the ghost sudoers file');
+        term.writeln('\x1b[31mauthentication failed:\x1b[0m visitor is not in the pac sudoers file');
       } else if (normalized === 'sudo make coffee') {
         term.writeln('\x1b[33merror:\x1b[0m coffee daemon missing. Try hydration manually.');
       } else if (normalized === 'rm -rf /') {
-        term.writeln('\x1b[31mdenied:\x1b[0m GhostOS mounted portfolio volume as read-protected');
+        term.writeln('\x1b[31mdenied:\x1b[0m PacOS mounted portfolio volume as read-protected');
       } else if (normalized === 'hack') {
         runHack();
         return;
@@ -151,10 +151,10 @@ export function TerminalApp() {
           openApp(appId);
           term.writeln(`dispatch://open/${appId}`);
         } else {
-          term.writeln(`ghostsh: no app alias "${target}"`);
+          term.writeln(`pacsh: no app alias "${target}"`);
         }
       } else {
-        term.writeln(`ghostsh: command not found: ${command}`);
+        term.writeln(`pacsh: command not found: ${command}`);
         term.writeln('type "help" for available commands');
       }
 
@@ -196,7 +196,7 @@ export function TerminalApp() {
       });
     };
 
-    term.writeln('\x1b[37mGhostOS Terminal\x1b[0m - type "help" to list commands.');
+    term.writeln('\x1b[37mPacOS Terminal\x1b[0m - type "help" to list commands.');
     term.writeln('Session mounted at /home/fardin.');
     writePrompt();
 

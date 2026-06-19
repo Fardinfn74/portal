@@ -27,7 +27,7 @@ export const fileSystem: Record<Exclude<AppId, 'terminal' | 'games' | 'browser'>
       {
         name: 'about.txt',
         type: 'text/plain',
-        description: 'Short personal profile used by GhostOS.',
+        description: 'Short personal profile used by PacOS.',
         fields: {
           name: 'Fardin',
           role: 'CSE Student / Frontend Engineer',
@@ -55,7 +55,7 @@ export const fileSystem: Record<Exclude<AppId, 'terminal' | 'games' | 'browser'>
     summary: 'Realistic project samples arranged like inspectable files.',
     entries: [
       {
-        name: 'GhostOS.portfolio.json',
+        name: 'PacOS.portfolio.json',
         type: 'project',
         description: 'Browser OS portfolio with boot flow, desktop apps, terminal commands, games, and assistant.',
         fields: {
@@ -345,7 +345,7 @@ export const fileSystem: Record<Exclude<AppId, 'terminal' | 'games' | 'browser'>
         type: 'resume',
         description: 'Selected projects suitable for resume bullets.',
         fields: {
-          ghostos: 'built a browser OS portfolio with boot, login, desktop windows, terminal, games, and assistant',
+          pacos: 'built a browser OS portfolio with boot, login, desktop windows, terminal, games, and assistant',
           ctf_engine: 'designed an offline-first CTF writeup organizer with searchable challenge notes',
           campusconnect: 'created a student dashboard concept for events, notices, and course materials',
         },

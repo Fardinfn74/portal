@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Wifi, Battery, Search, Settings2, Command } from 'lucide-react';
-import { useGhostStore } from '../../store/useGhostStore';
+import { usePacStore } from '../../store/usePacStore';
 
 export function MenuBar() {
   const [time, setTime] = useState<string>('');
   const [date, setDate] = useState<string>('');
-  const windows = useGhostStore((state) => state.windows);
+  const windows = usePacStore((state) => state.windows);
 
   const activeWindow = windows.reduce((highest, current) => {
     if (current.minimized) return highest;

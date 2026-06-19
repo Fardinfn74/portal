@@ -32,7 +32,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
 
       {folderId === 'about' && (
         <div 
-          className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
+          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
           <div className="flex flex-col items-center mb-8">
@@ -75,7 +75,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
         </div>
       )}
       {folderId === 'gallery' && (
-        <div className="h-full w-full overflow-y-auto ghost-scrollbar p-8">
+        <div className="h-full w-full overflow-y-auto pac-scrollbar p-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {fileSystem.gallery.entries.map((entry, i) => (
               <motion.div
@@ -97,7 +97,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
       )}
       {folderId === 'experience' && (
         <div
-          className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
+          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
           <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
@@ -117,7 +117,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
       )}
       {folderId === 'education' && (
         <div
-          className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
+          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
           <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
@@ -139,7 +139,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
       )}
       {folderId === 'blogs' && (
         <div
-          className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
+          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
           <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
@@ -159,7 +159,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
       )}
       {folderId === 'contact' && (
         <div
-          className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
+          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
           <div className="text-white text-[1.1rem] leading-relaxed space-y-6 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
@@ -222,7 +222,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
       )}
       {folderId === 'projects' && (
         <div
-          className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
+          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
           <div className="text-white text-[1.1rem] leading-relaxed space-y-8 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
@@ -301,11 +301,11 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
             <hr className="border-white/10" />
 
             <section className="space-y-4">
-              <h1 className="text-4xl font-bold">👻 GhostOS</h1>
+              <h1 className="text-4xl font-bold">🕹️ PacOS</h1>
               <h3 className="text-xl font-semibold italic text-white/80">Linux-Inspired Interactive Developer Portfolio</h3>
               <p><strong>Status:</strong> 🚀 Active Development</p>
-              <p>GhostOS transforms a traditional portfolio into an immersive Linux desktop experience. Visitors enter through a cinematic boot sequence and login screen before exploring an interactive operating system featuring projects, skills, experience, and achievements.</p>
-              <p>Integrated into GhostOS is <strong>Pacman</strong>, an intelligent AI assistant that helps visitors navigate the system, answer questions about my work, and provide an engaging portfolio experience.</p>
+              <p>PacOS transforms a traditional portfolio into an immersive Linux desktop experience. Visitors enter through a cinematic boot sequence and login screen before exploring an interactive operating system featuring projects, skills, experience, and achievements.</p>
+              <p>Integrated into PacOS is <strong>Pacman</strong>, an intelligent AI assistant that helps visitors navigate the system, answer questions about my work, and provide an engaging portfolio experience.</p>
               <div className="space-y-2">
                 <h3 className="text-xl font-bold">Features</h3>
                 <ul className="list-none space-y-1 ml-4">
@@ -346,7 +346,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
       )}
       {folderId === 'skills' && (
         <div 
-          className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
+          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
           <div className="text-white text-[1.1rem] leading-relaxed drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide whitespace-pre-wrap">
@@ -396,7 +396,7 @@ Tools
       )}
       {folderId === 'hackathons' && (
         <div 
-          className="max-w-2xl w-full h-full overflow-y-auto ghost-scrollbar pt-12 pb-8 px-4"
+          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
           style={{ fontFamily: '"Times New Roman", Times, serif' }}
         >
           <div className="text-white text-[1.1rem] leading-relaxed drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide whitespace-pre-wrap">
@@ -431,7 +431,7 @@ function RootExplorer({ onNavigate }: { onNavigate: (folderId: FolderAppId) => v
       <div className="border-b border-white/10 p-4">
         <p className="font-mono text-xs uppercase text-white/50 tracking-widest">Root / File Explorer</p>
       </div>
-      <div className="flex-1 overflow-y-auto p-6 ghost-scrollbar">
+      <div className="flex-1 overflow-y-auto p-6 pac-scrollbar">
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6">
           {folders.map((f) => {
             const b = fileSystem[f];

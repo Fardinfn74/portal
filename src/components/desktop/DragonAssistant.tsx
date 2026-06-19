@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useGhostStore } from '../../store/useGhostStore';
+import { usePacStore } from '../../store/usePacStore';
 
 interface Point {
   x: number;
@@ -43,8 +43,8 @@ function drawDot(ctx: CanvasRenderingContext2D, x: number, y: number, r: number,
 }
 
 export function DragonAssistant() {
-  const dragonEnabled = useGhostStore((state) => state.dragonEnabled);
-  const dragonSpeed = useGhostStore((state) => state.dragonSpeed);
+  const dragonEnabled = usePacStore((state) => state.dragonEnabled);
+  const dragonSpeed = usePacStore((state) => state.dragonSpeed);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mouseRef = useRef({

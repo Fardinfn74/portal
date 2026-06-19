@@ -168,19 +168,19 @@ export function TetrisGame() {
     setScore(0); setLines(0); setLevel(1); setOver(false); setRunning(false);
   };
 
-  // Ghost piece
-  let ghostR = pos.r;
-  while (valid(board, cur.shape, ghostR + 1, pos.c)) ghostR++;
+  // Pac piece
+  let pacR = pos.r;
+  while (valid(board, cur.shape, pacR + 1, pos.c)) pacR++;
 
-  const getCell = (r: number, c: number): { color: string; glow?: boolean; ghost?: boolean } | null => {
+  const getCell = (r: number, c: number): { color: string; glow?: boolean; pac?: boolean } | null => {
     for (let pr = 0; pr < cur.shape.length; pr++)
       for (let pc = 0; pc < cur.shape[pr].length; pc++)
         if (cur.shape[pr][pc] && pos.r + pr === r && pos.c + pc === c)
           return { color: cur.color, glow: true };
     for (let pr = 0; pr < cur.shape.length; pr++)
       for (let pc = 0; pc < cur.shape[pr].length; pc++)
-        if (cur.shape[pr][pc] && ghostR + pr === r && pos.c + pc === c)
-          return { color: cur.color, ghost: true };
+        if (cur.shape[pr][pc] && pacR + pr === r && pos.c + pc === c)
+          return { color: cur.color, pac: true };
     if (board[r][c]) return { color: board[r][c]! };
     return null;
   };
@@ -216,7 +216,7 @@ export function TetrisGame() {
                 key={i}
                 className="m-[0.5px] rounded-[2px] transition-colors duration-75"
                 style={
-                  cell?.ghost
+                  cell?.pac
                     ? { border: '1px dashed', borderColor: cell.color + '40' }
                     : cell
                       ? { backgroundColor: cell.color, boxShadow: cell.glow ? `0 0 6px ${cell.color}66` : undefined }

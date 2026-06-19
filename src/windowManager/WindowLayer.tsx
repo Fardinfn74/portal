@@ -1,15 +1,15 @@
-import { useGhostStore } from '../store/useGhostStore';
+import { usePacStore } from '../store/usePacStore';
 import { WindowFrame } from './WindowFrame';
 
 export function WindowLayer() {
-  const windows = useGhostStore((state) => state.windows);
+  const windows = usePacStore((state) => state.windows);
 
   return (
     <div className="pointer-events-none absolute inset-0 z-20">
       {windows
-        .filter((ghostWindow) => !ghostWindow.minimized)
-        .map((ghostWindow) => (
-          <WindowFrame key={ghostWindow.id} window={ghostWindow} />
+        .filter((pacWindow) => !pacWindow.minimized)
+        .map((pacWindow) => (
+          <WindowFrame key={pacWindow.id} window={pacWindow} />
         ))}
     </div>
   );

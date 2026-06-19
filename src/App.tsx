@@ -11,7 +11,7 @@ export default function App() {
 
   useEffect(() => {
     const originalTitle = document.title;
-    document.title = 'GhostOS';
+    document.title = 'PacOS';
 
     return () => {
       document.title = originalTitle;
