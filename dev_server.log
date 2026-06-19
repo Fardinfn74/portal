@@ -8,3 +8,4 @@
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://192.168.0.2:5173/
 4:42:24 PM [vite] (client) [optimizer] bundling dependencies...
+5:02:45 PM [vite] (client) hmr update /src/index.css, /src/windows/AppWindowContent.tsx, /src/windows/FileExplorerWindow.tsx
