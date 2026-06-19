@@ -6,13 +6,12 @@ import { usePacStore } from '../store/usePacStore';
 import { pacManAscii } from '../assets/pacAscii';
 import type { AppId } from '../core/types';
 
-const prompt = '\x1b[37mfardin@pacos\x1b[0m:\x1b[37m~\x1b[0m$ ';
+const prompt = '\x1b[37mfardin@pacOS\x1b[0m:\x1b[37m~\x1b[0m$ ';
 
 const appAliases: Record<string, AppId> = {
   projects: 'projects',
   resume: 'resume',
   contact: 'contact',
-  hackathons: 'hackathons',
   terminal: 'terminal',
   games: 'games',
   game: 'games',
@@ -69,7 +68,7 @@ export function TerminalApp() {
 
     const writeHelp = () => {
       term.writeln('Available commands:');
-      term.writeln('  neofetch        show PacOS system info');
+      term.writeln('  neofetch        show pacOS system info');
       term.writeln('  ls              list desktop items');
       term.writeln('  cat about.txt   print short bio');
       term.writeln('  clear           clear terminal');
@@ -79,13 +78,13 @@ export function TerminalApp() {
       term.writeln('  hack            run harmless fake hacking animation');
       term.writeln('  sudo make coffee');
       term.writeln('  rm -rf /');
-      term.writeln('  open projects|resume|contact|hackathons|terminal|games|browser');
+      term.writeln('  open projects|resume|contact|terminal|games|browser');
     };
 
     const runHack = () => {
       lockedRef.current = true;
       const lines = [
-        'starting harmless PacOS lab animation...',
+        'starting harmless pacOS lab animation...',
         'scanning 127.0.0.1 ports: 22 closed, 80 simulated, 443 simulated',
         'loading matrix payload: [##########] 100%',
         'decrypting portfolio vault: ACCESS VISUAL ONLY',
@@ -124,7 +123,7 @@ export function TerminalApp() {
         writeHelp();
       } else if (normalized === 'neofetch') {
         term.writeln('\x1b[37m' + pacManAscii + '\x1b[0m');
-        term.writeln('\x1b[37mOS:\x1b[0m PacOS');
+        term.writeln('\x1b[37mOS:\x1b[0m pacOS');
         term.writeln('\x1b[37mUser:\x1b[0m Fardin');
         term.writeln('\x1b[37mRole:\x1b[0m CSE student / frontend engineer');
         term.writeln('\x1b[37mShell:\x1b[0m pacsh');
@@ -140,7 +139,7 @@ export function TerminalApp() {
       } else if (normalized === 'sudo make coffee') {
         term.writeln('\x1b[33merror:\x1b[0m coffee daemon missing. Try hydration manually.');
       } else if (normalized === 'rm -rf /') {
-        term.writeln('\x1b[31mdenied:\x1b[0m PacOS mounted portfolio volume as read-protected');
+        term.writeln('\x1b[31mdenied:\x1b[0m pacOS mounted portfolio volume as read-protected');
       } else if (normalized === 'hack') {
         runHack();
         return;
@@ -196,7 +195,7 @@ export function TerminalApp() {
       });
     };
 
-    term.writeln('\x1b[37mPacOS Terminal\x1b[0m - type "help" to list commands.');
+    term.writeln('\x1b[37mpacOS Terminal\x1b[0m - type "help" to list commands.');
     term.writeln('Session mounted at /home/fardin.');
     writePrompt();
 

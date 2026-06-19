@@ -76,7 +76,7 @@ export function ImageViewerWindow({ src, alt }: ImageViewerWindowProps) {
         </div>
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>PACOS_VIEWER_V2.0</span>
+          <span>pacOS_VIEWER_V2.0</span>
         </div>
       </div>
     </div>

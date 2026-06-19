@@ -1,9 +1,9 @@
 import { FormEvent, useMemo, useState } from 'react';
 import { usePacStore } from '../store/usePacStore';
 
-const pages: Record<string, { title: string; body: string; links: Array<{ label: string; app: 'projects' | 'resume' | 'contact' | 'hackathons' }> }> = {
+const pages: Record<string, { title: string; body: string; links: Array<{ label: string; app: 'projects' | 'resume' | 'contact' }> }> = {
   'pac://home': {
-    title: 'PacOS',
+    title: 'pacOS',
     body: 'Internal browser page for browsing Fardin portfolio routes without leaving the desktop.',
     links: [
       { label: 'Projects', app: 'projects' },
@@ -13,10 +13,9 @@ const pages: Record<string, { title: string; body: string; links: Array<{ label:
   },
   'pac://projects': {
     title: 'Projects Index',
-    body: 'Selected builds include PacOS, CTF Writeup Engine, CampusConnect, and SafePath AI.',
+    body: 'Selected builds include pacOS, CTF Writeup Engine, CampusConnect, and SafePath AI.',
     links: [
       { label: 'Open Projects Folder', app: 'projects' },
-      { label: 'Open Hackathons', app: 'hackathons' },
     ],
   },
   'pac://contact': {

@@ -59,9 +59,9 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
             >
               <div className="absolute inset-0 rounded-full bg-white/20 blur-xl animate-pulse" />
               <img
-                src="/pfp.jpg"
+                src="/pfp.png"
                 alt="Profile"
-                className="w-48 h-48 rounded-full object-cover border-2 border-white/50 shadow-[0_0_30px_rgba(255,255,255,0.4)] relative z-10"
+                className="w-96 h-96 rounded-full object-cover border-2 border-white/50 shadow-[0_0_30px_rgba(255,255,255,0.4)] relative z-10"
               />
             </motion.div>
           </div>
@@ -81,28 +81,6 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
               <li>• Software Engineering</li>
             </ul>
             <p>My long-term goal is to build products that solve real-world problems and make technology more accessible to everyone.</p>
-          </div>
-        </div>
-      )}
-      {folderId === 'gallery' && (
-        <div className="h-full w-full overflow-y-auto pac-scrollbar p-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {fileSystem.gallery.entries.map((entry, i) => (
-              <motion.div
-                key={entry.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
-                className="aspect-square rounded-lg overflow-hidden border border-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all group cursor-pointer"
-                onClick={() => handleImageClick(entry.fields.url as string, entry.description)}
-              >
-                <img
-                  src={entry.fields.url as string}
-                  alt={entry.description}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </motion.div>
-            ))}
           </div>
         </div>
       )}
@@ -167,26 +145,6 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
               <li>☁️ Cloud Computing</li>
               <li>🧠 Problem Solving</li>
             </ul>
-          </div>
-        </div>
-      )}
-      {folderId === 'blogs' && (
-        <div
-          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
-          style={{ fontFamily: '"Times New Roman", Times, serif' }}
-        >
-          <div className="text-white text-[1.1rem] leading-relaxed space-y-5 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
-            <p>I enjoy sharing my learning journey, development experiences, hackathon stories, AI experiments, Linux customization, and programming tips.</p>
-            <p className="font-bold text-xl mt-6">Topics</p>
-            <ul className="list-none space-y-3 ml-4">
-              <li>🤖 Artificial Intelligence</li>
-              <li>🐧 Linux</li>
-              <li>💻 Programming</li>
-              <li>🚀 Web Development</li>
-              <li>🏆 Hackathons</li>
-              <li>🌱 Productivity</li>
-            </ul>
-            <p className="italic mt-6">Stay tuned—more technical articles and project write-ups are on the way.</p>
           </div>
         </div>
       )}
@@ -334,11 +292,11 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
             <hr className="border-white/10" />
 
             <section className="space-y-4">
-              <h1 className="text-4xl font-bold">🕹️ PacOS</h1>
+              <h1 className="text-4xl font-bold">🕹️ pacOS</h1>
               <h3 className="text-xl font-semibold italic text-white/80">Linux-Inspired Interactive Developer Portfolio</h3>
               <p><strong>Status:</strong> 🚀 Active Development</p>
-              <p>PacOS transforms a traditional portfolio into an immersive Linux desktop experience. Visitors enter through a cinematic boot sequence and login screen before exploring an interactive operating system featuring projects, skills, experience, and achievements.</p>
-              <p>Integrated into PacOS is <strong>Pacman</strong>, an intelligent AI assistant that helps visitors navigate the system, answer questions about my work, and provide an engaging portfolio experience.</p>
+              <p>pacOS transforms a traditional portfolio into an immersive Linux desktop experience. Visitors enter through a cinematic boot sequence and login screen before exploring an interactive operating system featuring projects, skills, experience, and achievements.</p>
+              <p>Integrated into pacOS is <strong>Pacman</strong>, an intelligent AI assistant that helps visitors navigate the system, answer questions about my work, and provide an engaging portfolio experience.</p>
               <div className="space-y-2">
                 <h3 className="text-xl font-bold">Features</h3>
                 <ul className="list-none space-y-1 ml-4">
@@ -427,27 +385,6 @@ Tools
           </div>
         </div>
       )}
-      {folderId === 'hackathons' && (
-        <div 
-          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
-          style={{ fontFamily: '"Times New Roman", Times, serif' }}
-        >
-          <div className="text-white text-[1.1rem] leading-relaxed drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide whitespace-pre-wrap">
-            {`I actively participate in hackathons where I collaborate with talented developers, solve real-world challenges, and rapidly build innovative products.
-
-Highlights
-
-🏆 National Hackathon Finalist
-🤖 AI BuildFest Finalist
-💡 Built AI-powered applications
-👨💻 Worked in cross-functional teams
-🎤 Delivered project pitches to industry judges
-⏱️ Experienced multiple 12–24 hour hackathons
-
-Hackathons have helped me improve problem-solving, teamwork, communication, and rapid product development skills.`}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -455,9 +392,8 @@ Hackathons have helped me improve problem-solving, teamwork, communication, and 
 
 function RootExplorer({ onNavigate }: { onNavigate: (folderId: FolderAppId) => void }) {
   const folders: FolderAppId[] = [
-    'about', 'projects', 'skills', 'hackathons', 
-    'experience', 'education', 'certificates', 'blogs', 
-    'contact', 'resume', 'gallery'
+    'about', 'education', 'skills', 'experience', 'projects',
+    'certificates', 'resume', 'contact'
   ];
 
   return (

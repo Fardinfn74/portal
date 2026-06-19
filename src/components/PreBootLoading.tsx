@@ -38,13 +38,13 @@ export function PreBootLoading({ onComplete }: PreBootLoadingProps) {
         <div className="relative mb-6">
           <div className="absolute inset-0 rounded-full bg-white/10 blur-2xl animate-pulse" />
           <img
-            src="/PacOS.jpg"
-            alt="PacOS Logo"
+            src="/pacOS.jpg"
+            alt="pacOS Logo"
             className="relative z-10 h-32 w-32 rounded-full object-cover border-2 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.2)]"
           />
         </div>
         <h1 className="text-4xl font-bold tracking-[0.3em] uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
-          PacOS
+          pacOS
         </h1>
       </motion.div>
 

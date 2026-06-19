@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     const originalTitle = document.title;
-    document.title = 'PacOS';
+    document.title = 'pacOS';
 
     return () => {
       document.title = originalTitle;

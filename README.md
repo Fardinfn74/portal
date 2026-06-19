@@ -1,11 +1,13 @@
-# 🕹️ PacOS Portfolio
-
-![PacOS Banner](https://raw.githubusercontent.com/fardin-os/pacos/main/public/pacos-banner.svg)
-
-**PacOS** is an immersive, interactive browser-based operating system portfolio built for Fardin. Instead of presenting projects as a normal scrolling website, it transforms the portfolio into a full desktop environment complete with a cinematic boot sequence, login screen, draggable windows, and a functional terminal.
+# 🕹️ pacOS Portfolio
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/fardin-os/pacos/main/public/pacos-icon.svg" width="120" alt="PacOS Logo" />
+  <img src="./public/pacOS-banner.svg" alt="pacOS Banner" width="100%" />
+</p>
+
+**pacOS** is an immersive, interactive browser-based operating system portfolio built for Fardin. Instead of presenting projects as a normal scrolling website, it transforms the portfolio into a full desktop environment complete with a cinematic boot sequence, login screen, draggable windows, and a functional terminal.
+
+<p align="center">
+  <img src="./public/pacOS-icon.svg" width="120" alt="pacOS Logo" />
 </p>
 
 ## 🌟 Highlights
@@ -23,10 +25,10 @@
 
 | Boot Sequence | Login Screen |
 | :---: | :---: |
-| ![Boot Screen](public/screenshots/boot.png) | ![Login Screen](public/screenshots/login.png) |
+| ![Boot Screen](./public/screenshots/boot.png) | ![Login Screen](./public/screenshots/login.png) |
 
 ### The Desktop
-![PacOS Desktop](public/screenshots/desktop.png)
+![pacOS Desktop](./public/screenshots/desktop.png)
 *A look at the interactive desktop with folders and live widgets.*
 
 ---
@@ -50,7 +52,7 @@ src/
   ├── games/            # Interactive game components
   ├── pacman/           # AI Assistant implementation
   ├── store/            # Zustand state management (PacStore)
-  ├── terminal/         # PacOS Terminal (xterm.js integration)
+  ├── terminal/         # pacOS Terminal (xterm.js integration)
   ├── windowManager/    # Window layers and frame logic
   └── windows/          # Application-specific window content
 ```
