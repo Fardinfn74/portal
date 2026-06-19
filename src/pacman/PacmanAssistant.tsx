@@ -14,7 +14,7 @@ const actionMap: Array<{ keys: string[]; appId: AppId; response: string }> = [
   {
     keys: ['project', 'projects'],
     appId: 'projects',
-    response: 'Opening the Projects folder. The PacOS build and CTF tools are in there.',
+    response: 'Opening the Projects folder. The pacOS build and CTF tools are in there.',
   },
   {
     keys: ['resume', 'cv'],
@@ -25,11 +25,6 @@ const actionMap: Array<{ keys: string[]; appId: AppId; response: string }> = [
     keys: ['contact', 'email', 'social'],
     appId: 'contact',
     response: 'Opening Contact. You can find email, socials, and availability there.',
-  },
-  {
-    keys: ['hackathon', 'hackathons'],
-    appId: 'hackathons',
-    response: 'Opening Hackathons. These entries show event work and shipped prototypes.',
   },
   {
     keys: ['terminal', 'shell'],
@@ -47,7 +42,7 @@ const initialMessages: Message[] = [
   {
     id: 'welcome',
     from: 'pacman',
-    text: 'Hi, I am Pacman. Ask me to open projects, resume, contact, hackathons, terminal, or play game.',
+    text: 'Hi, I am Pacman. Ask me to open projects, resume, contact, terminal, or play game.',
   },
 ];
 
@@ -88,8 +83,8 @@ export function PacmanAssistant() {
       text: action
         ? action.response
         : developerMode
-          ? 'Developer mode is unlocked. I can still open projects, resume, contact, hackathons, terminal, or games.'
-          : 'I can route this desktop. Try: open projects, open resume, open contact, open hackathons, open terminal, or play game.',
+          ? 'Developer mode is unlocked. I can still open projects, resume, contact, terminal, or games.'
+          : 'I can route this desktop. Try: open projects, open resume, open contact, open terminal, or play game.',
     };
 
     setMessages((current) => [...current, visitorMessage, pacmanMessage]);

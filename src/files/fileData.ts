@@ -23,28 +23,20 @@ export const fileSystem: Record<
     | 'terminal'
     | 'games'
     | 'browser'
-    | 'cert_01'
-    | 'cert_02'
-    | 'cert_03'
-    | 'cert_04'
-    | 'cert_05'
-    | 'cert_06'
-    | 'cert_07'
-    | 'cert_08'
     | 'imageViewer'
   >,
   FileBundle
 > = {
   about: {
-    label: 'About_Me',
-    path: '/home/fardin/Desktop/About_Me',
+    label: 'About Me',
+    path: '/home/fardin/Desktop/About Me',
     summary:
       'CSE student focused on frontend engineering, cybersecurity labs, CTF practice, and building sharp browser experiences.',
     entries: [
       {
         name: 'about.txt',
         type: 'text/plain',
-        description: 'Short personal profile used by PacOS.',
+        description: 'Short personal profile used by pacOS.',
         fields: {
           name: 'Fardin',
           role: 'CSE Student / Frontend Engineer',
@@ -72,7 +64,7 @@ export const fileSystem: Record<
     summary: 'Realistic project samples arranged like inspectable files.',
     entries: [
       {
-        name: 'PacOS.portfolio.json',
+        name: 'pacOS.portfolio.json',
         type: 'project',
         description: 'Browser OS portfolio with boot flow, desktop apps, terminal commands, games, and assistant.',
         fields: {
@@ -161,48 +153,6 @@ export const fileSystem: Record<
       },
     ],
   },
-  hackathons: {
-    label: 'Hackathons',
-    path: '/home/fardin/Desktop/Hackathons',
-    summary: 'Event history and shipped prototypes.',
-    entries: [
-      {
-        name: 'BRACU-Hack-Fest-2025.json',
-        type: 'hackathon',
-        description: 'Built SafePath AI, a risk-aware route and emergency contact prototype.',
-        fields: {
-          role: 'frontend lead',
-          team_size: '4',
-          result: 'Top 10 finalist sample entry',
-          shipped: ['interactive route dashboard', 'incident form', 'pitch deck demo'],
-        },
-        tags: ['ai', 'safety', 'frontend'],
-      },
-      {
-        name: 'NASA-Space-Apps-Bangladesh-2024.json',
-        type: 'hackathon',
-        description: 'FloodWatch concept using public climate and satellite-inspired visual data.',
-        fields: {
-          role: 'UI engineer',
-          team_size: '5',
-          result: 'regional submission sample entry',
-          shipped: ['risk cards', 'map mock', 'public awareness flow'],
-        },
-        tags: ['climate', 'data', 'maps'],
-      },
-      {
-        name: 'CyberSprint-CTF-2024.json',
-        type: 'competition',
-        description: 'Team-based capture-the-flag practice event covering web, crypto, and forensics.',
-        fields: {
-          role: 'web challenge solver',
-          result: 'practice scoreboard sample',
-          learned: ['payload hygiene', 'writeup discipline', 'basic forensics workflow'],
-        },
-        tags: ['ctf', 'security'],
-      },
-    ],
-  },
   experience: {
     label: 'Experience',
     path: '/home/fardin/Desktop/Experience',
@@ -259,77 +209,52 @@ export const fileSystem: Record<
     summary: 'Professional certifications and achievements.',
     entries: [
       {
-        name: 'Web Design Certificate',
+        name: 'certificate_01',
         type: 'image/jpeg',
-        description: 'Responsive Web Design Certification',
+        description: 'Professional Certification 01',
         fields: { url: '/certificates/certificate_01.jpeg' },
       },
       {
-        name: 'JavaScript Certification',
+        name: 'certificate_02',
         type: 'image/png',
-        description: 'JavaScript Algorithms and Data Structures',
+        description: 'Professional Certification 02',
         fields: { url: '/certificates/certificate_02.png' },
       },
       {
-        name: 'Frontend Development',
+        name: 'certificate_03',
         type: 'image/png',
-        description: 'Frontend Development Libraries',
+        description: 'Professional Certification 03',
         fields: { url: '/certificates/certificate_03.png' },
       },
       {
-        name: 'Data Visualization',
+        name: 'certificate_04',
         type: 'image/png',
-        description: 'Data Visualization Certification',
+        description: 'Professional Certification 04',
         fields: { url: '/certificates/certificate_04.png' },
       },
       {
-        name: 'Back End Development',
+        name: 'certificate_05',
         type: 'image/png',
-        description: 'Back End Development and APIs',
-        fields: { url: '/certificates/certificate_05.PNG' },
+        description: 'Professional Certification 05',
+        fields: { url: '/certificates/certificate_05.png' },
       },
       {
-        name: 'Quality Assurance',
+        name: 'certificate_06',
         type: 'image/png',
-        description: 'Quality Assurance Certification',
-        fields: { url: '/certificates/certificate_06.PNG' },
+        description: 'Professional Certification 06',
+        fields: { url: '/certificates/certificate_06.png' },
       },
       {
-        name: 'Scientific Computing',
+        name: 'certificate_07',
         type: 'image/png',
-        description: 'Scientific Computing with Python',
-        fields: { url: '/certificates/certificate_07.PNG' },
+        description: 'Professional Certification 07',
+        fields: { url: '/certificates/certificate_07.png' },
       },
       {
-        name: 'Data Analysis',
+        name: 'certificate_08',
         type: 'image/png',
-        description: 'Data Analysis with Python',
-        fields: { url: '/certificates/certificate_08.PNG' },
-      },
-    ],
-  },
-  blogs: {
-    label: 'Blogs',
-    path: '/home/fardin/Desktop/Blogs',
-    summary: 'Technical articles and project write-ups.',
-    entries: [
-      {
-        name: 'topics.json',
-        type: 'blog-info',
-        description: 'Topics covered in my blogs.',
-        fields: {
-          intro: 'I enjoy sharing my learning journey, development experiences, hackathon stories, AI experiments, Linux customization, and programming tips.',
-          topics: [
-            'Artificial Intelligence',
-            'Linux',
-            'Programming',
-            'Web Development',
-            'Hackathons',
-            'Productivity'
-          ],
-          note: 'Stay tuned—more technical articles and project write-ups are on the way.'
-        },
-        tags: ['blog', 'topics'],
+        description: 'Professional Certification 08',
+        fields: { url: '/certificates/certificate_08.png' },
       },
     ],
   },
@@ -377,7 +302,7 @@ export const fileSystem: Record<
         type: 'resume',
         description: 'Selected projects suitable for resume bullets.',
         fields: {
-          pacos: 'built a browser OS portfolio with boot, login, desktop windows, terminal, games, and assistant',
+          pacOS: 'built a browser OS portfolio with boot, login, desktop windows, terminal, games, and assistant',
           ctf_engine: 'designed an offline-first CTF writeup organizer with searchable challenge notes',
           campusconnect: 'created a student dashboard concept for events, notices, and course materials',
         },
@@ -412,61 +337,6 @@ export const fileSystem: Record<
     path: '/home/fardin/Desktop',
     summary: 'System files and documents.',
     entries: [],
-  },
-  gallery: {
-    label: 'Gallery',
-    path: '/home/fardin/Pictures',
-    summary: 'Photos and screenshots.',
-    entries: [
-      {
-        name: 'image_01.jpg',
-        type: 'image/jpeg',
-        description: 'Gallery photo 1',
-        fields: { url: '/gallery/image_01.jpg' },
-      },
-      {
-        name: 'image_02.jpg',
-        type: 'image/jpeg',
-        description: 'Gallery photo 2',
-        fields: { url: '/gallery/image_02.jpg' },
-      },
-      {
-        name: 'image_03.jpg',
-        type: 'image/jpeg',
-        description: 'Gallery photo 3',
-        fields: { url: '/gallery/image_03.jpg' },
-      },
-      {
-        name: 'image_04.jpg',
-        type: 'image/jpeg',
-        description: 'Gallery photo 4',
-        fields: { url: '/gallery/image_04.jpg' },
-      },
-      {
-        name: 'image_05.jpg',
-        type: 'image/jpeg',
-        description: 'Gallery photo 5',
-        fields: { url: '/gallery/image_05.jpg' },
-      },
-      {
-        name: 'image_06.jpg',
-        type: 'image/jpeg',
-        description: 'Gallery photo 6',
-        fields: { url: '/gallery/image_06.jpg' },
-      },
-      {
-        name: 'image_07.jpg',
-        type: 'image/jpeg',
-        description: 'Gallery photo 7',
-        fields: { url: '/gallery/image_07.jpg' },
-      },
-      {
-        name: 'image_08.jpg',
-        type: 'image/jpeg',
-        description: 'Gallery photo 8',
-        fields: { url: '/gallery/image_08.jpg' },
-      },
-    ],
   },
   trash: {
     label: 'Trash',

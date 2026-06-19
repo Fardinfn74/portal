@@ -63,7 +63,7 @@ export function LoginScreen({ onComplete }: LoginScreenProps) {
         <div className="mb-8 flex flex-col items-center">
           <div className="relative mb-6 h-32 w-32 overflow-hidden rounded-full border-2 border-white/20 bg-white/5 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
             <img 
-              src="/pfp.jpg"
+              src="/profile.png"
               alt="Profile" 
               className="h-full w-full object-cover"
             />

@@ -1,6 +1,6 @@
 export const pacManAscii = String.raw`
       .----.
-     /      \       PacOS
+     /      \       pacOS
     |  (O)   |      The interactive portfolio
     |        <
      \      /

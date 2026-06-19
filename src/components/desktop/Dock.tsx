@@ -12,7 +12,6 @@ export function Dock() {
   
   const dockItems: { appId: AppId; kind: string }[] = [
     { appId: 'fileExplorer', kind: 'app' },
-    { appId: 'gallery', kind: 'app' },
     { appId: 'games', kind: 'app' },
     { appId: 'browser', kind: 'app' },
     { appId: 'terminal', kind: 'app' },
@@ -25,7 +24,6 @@ export function Dock() {
       case 'games': return <Gamepad2 size={24} strokeWidth={1.5} className="text-white" />;
       case 'browser': return <Globe size={24} strokeWidth={1.5} className="text-white" />;
       case 'fileExplorer': return <Folder size={24} strokeWidth={1.5} className="text-white" />;
-      case 'gallery': return <Image size={24} strokeWidth={1.5} className="text-white" />;
       case 'trash': return <Trash2 size={24} strokeWidth={1.5} className="text-white" />;
       default: return <Folder size={24} strokeWidth={1.5} className="text-white" />;
     }

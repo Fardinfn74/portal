@@ -24,7 +24,7 @@ export function Taskbar() {
         <span className="grid h-5 w-5 place-items-center rounded bg-emerald-300 text-xs font-black text-slate-950">
           P
         </span>
-        PacOS
+        pacOS
       </button>
 
       <div className="hidden h-8 items-center gap-1 border-l border-white/10 pl-2 md:flex">
