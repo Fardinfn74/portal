@@ -39,7 +39,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
       <div className="w-full max-w-4xl px-6 font-mono">
         <div className="mb-12 flex items-center justify-between border-b border-white/10 pb-4 text-[10px] tracking-[0.2em] uppercase text-white/40">
           <span className="flex items-center gap-2">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+            <span className="h-2 w-2 animate-pulse rounded-full bg-white/80 shadow-[0_0_8px_#fff]" />
             Secure System Boot
           </span>
           <span>TTY-01</span>
@@ -54,8 +54,8 @@ export function BootScreen({ onComplete }: BootScreenProps) {
               transition={{ duration: 0.3 }}
               className={`${
                 idx === visibleLines.length - 1
-                  ? 'text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]'
-                  : 'text-white/80'
+                  ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]'
+                  : 'text-white/70'
               }`}
             >
               <span className="mr-3 opacity-30">[{idx.toString().padStart(2, '0')}]</span>
@@ -65,7 +65,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
           <motion.p
             animate={{ opacity: [1, 0, 1] }}
             transition={{ duration: 0.8, repeat: Infinity }}
-            className="text-emerald-500 drop-shadow-[0_0_10px_#10b981]"
+            className="text-white drop-shadow-[0_0_10px_#fff]"
           >
             _
           </motion.p>

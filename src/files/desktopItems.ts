@@ -11,6 +11,7 @@ export const desktopItems: DesktopItem[] = [
   { appId: 'blogs', label: 'Blogs', kind: 'folder' },
   { appId: 'contact', label: 'Contact', kind: 'folder' },
   { appId: 'resume', label: 'Resume', kind: 'folder' },
+  { appId: 'gallery', label: 'Gallery', kind: 'folder' },
   { appId: 'cert_01', label: 'Web Design', kind: 'app' },
   { appId: 'cert_02', label: 'JS Cert', kind: 'app' },
   { appId: 'cert_03', label: 'Frontend', kind: 'app' },

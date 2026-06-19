@@ -5,12 +5,15 @@ import { GamesHub } from './GamesHub';
 import { TerminalApp } from '../terminal/TerminalApp';
 import { fileSystem } from '../files/fileData';
 import { ImageViewerWindow } from './ImageViewerWindow';
+import { usePacStore } from '../store/usePacStore';
 
 type AppWindowContentProps = {
   appId: AppId;
 };
 
 export function AppWindowContent({ appId }: AppWindowContentProps) {
+  const activeImage = usePacStore((s) => s.activeImage);
+
   if (appId === 'terminal') {
     return <TerminalApp />;
   }
@@ -27,12 +30,8 @@ export function AppWindowContent({ appId }: AppWindowContentProps) {
     return <FileExplorerWindow appId={appId as keyof typeof fileSystem} />;
   }
 
-  if (appId.startsWith('cert_')) {
-    const certIndex = parseInt(appId.split('_')[1]) - 1;
-    const cert = fileSystem.certificates.entries[certIndex];
-    if (cert) {
-      return <ImageViewerWindow src={cert.fields.url as string} alt={cert.name} />;
-    }
+  if (appId === 'imageViewer' && activeImage) {
+    return <ImageViewerWindow src={activeImage.src} alt={activeImage.alt} />;
   }
 
   return (

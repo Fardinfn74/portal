@@ -11,6 +11,8 @@ type PacStore = {
   toasts: Toast[];
   dragonEnabled: boolean;
   dragonSpeed: number;
+  activeImage: { src: string; alt: string } | null;
+  setActiveImage: (image: { src: string; alt: string } | null) => void;
   openApp: (appId: AppId) => string;
   closeWindow: (id: string) => void;
   minimizeWindow: (id: string) => void;
@@ -52,6 +54,9 @@ export const usePacStore = create<PacStore>((set, get) => ({
   toasts: [],
   dragonEnabled: typeof window !== 'undefined' ? localStorage.getItem('pac_man_enabled') !== 'false' : true,
   dragonSpeed: (typeof window !== 'undefined' && Number(localStorage.getItem('pac_man_speed'))) || 8,
+  activeImage: null,
+
+  setActiveImage: (activeImage) => set({ activeImage }),
 
   openApp: (appId) => {
     const state = get();

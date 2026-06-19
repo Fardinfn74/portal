@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { fileSystem } from '../files/fileData';
+import { appRegistry } from '../apps/appRegistry';
 import { Folder, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { usePacStore } from '../store/usePacStore';
 
 type FolderAppId = keyof typeof fileSystem;
 
@@ -18,6 +20,14 @@ type FolderViewerProps = {
 };
 
 function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
+  const openApp = usePacStore((s) => s.openApp);
+  const setActiveImage = usePacStore((s) => s.setActiveImage);
+
+  const handleImageClick = (src: string, alt: string) => {
+    setActiveImage({ src, alt });
+    openApp('imageViewer');
+  };
+
   return (
     <div className="h-full w-full bg-transparent relative flex items-center justify-center p-8">
       {canGoBack && (
@@ -83,12 +93,35 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="aspect-square rounded-lg overflow-hidden border border-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all group"
+                className="aspect-square rounded-lg overflow-hidden border border-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all group cursor-pointer"
+                onClick={() => handleImageClick(entry.fields.url as string, entry.description)}
               >
                 <img
                   src={entry.fields.url as string}
                   alt={entry.description}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+      {folderId === 'certificates' && (
+        <div className="h-full w-full overflow-y-auto pac-scrollbar p-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {fileSystem.certificates.entries.map((entry, i) => (
+              <motion.div
+                key={entry.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05 }}
+                className="aspect-video rounded-lg overflow-hidden border border-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all group cursor-pointer bg-white/5"
+                onClick={() => handleImageClick(entry.fields.url as string, entry.name)}
+              >
+                <img
+                  src={entry.fields.url as string}
+                  alt={entry.name}
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
                 />
               </motion.div>
             ))}
@@ -419,7 +452,6 @@ Hackathons have helped me improve problem-solving, teamwork, communication, and 
   );
 }
 
-import { appRegistry } from '../apps/appRegistry';
 
 function RootExplorer({ onNavigate }: { onNavigate: (folderId: FolderAppId) => void }) {
   const folders: FolderAppId[] = [

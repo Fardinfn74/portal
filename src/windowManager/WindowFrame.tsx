@@ -31,6 +31,7 @@ export function WindowFrame({ window: pacWindow }: WindowFrameProps) {
   const closeWindow = usePacStore((state) => state.closeWindow);
   const minimizeWindow = usePacStore((state) => state.minimizeWindow);
   const toggleMaximize = usePacStore((state) => state.toggleMaximize);
+  const activeImage = usePacStore((state) => state.activeImage);
   const dragRef = useRef<DragState | null>(null);
   const resizeRef = useRef<ResizeState | null>(null);
 
@@ -154,7 +155,9 @@ export function WindowFrame({ window: pacWindow }: WindowFrameProps) {
         <div className="flex min-w-0 items-center gap-2">
           <div className="h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
           <h2 className="truncate font-mono text-xs font-semibold text-white uppercase tracking-wider">
-            {pacWindow.title}
+            {pacWindow.appId === 'imageViewer'
+              ? (activeImage?.alt || pacWindow.title)
+              : pacWindow.title}
           </h2>
         </div>
 
