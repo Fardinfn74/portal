@@ -64,5 +64,5 @@ This project is proprietary. The source code is made available for review, hirin
 ---
 
 <p align="center">
-  Built with ❤️ by Fardin
+  Built by Fardin FN
 </p>
