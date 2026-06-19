@@ -1,9 +1,9 @@
 import { FormEvent, useMemo, useState } from 'react';
-import { useGhostStore } from '../store/useGhostStore';
+import { usePacStore } from '../store/usePacStore';
 
 const pages: Record<string, { title: string; body: string; links: Array<{ label: string; app: 'projects' | 'resume' | 'contact' | 'hackathons' }> }> = {
-  'ghost://home': {
-    title: 'GhostOS',
+  'pac://home': {
+    title: 'PacOS',
     body: 'Internal browser page for browsing Fardin portfolio routes without leaving the desktop.',
     links: [
       { label: 'Projects', app: 'projects' },
@@ -11,15 +11,15 @@ const pages: Record<string, { title: string; body: string; links: Array<{ label:
       { label: 'Contact', app: 'contact' },
     ],
   },
-  'ghost://projects': {
+  'pac://projects': {
     title: 'Projects Index',
-    body: 'Selected builds include GhostOS, CTF Writeup Engine, CampusConnect, and SafePath AI.',
+    body: 'Selected builds include PacOS, CTF Writeup Engine, CampusConnect, and SafePath AI.',
     links: [
       { label: 'Open Projects Folder', app: 'projects' },
       { label: 'Open Hackathons', app: 'hackathons' },
     ],
   },
-  'ghost://contact': {
+  'pac://contact': {
     title: 'Contact Route',
     body: 'Use the Contact folder for email, socials, availability, and a quick message template.',
     links: [
@@ -31,17 +31,17 @@ const pages: Record<string, { title: string; body: string; links: Array<{ label:
 
 const normalizeUrl = (value: string) => {
   const trimmed = value.trim().toLowerCase();
-  if (!trimmed) return 'ghost://home';
+  if (!trimmed) return 'pac://home';
   if (trimmed in pages) return trimmed;
-  if (trimmed.includes('project')) return 'ghost://projects';
-  if (trimmed.includes('contact')) return 'ghost://contact';
-  return trimmed.startsWith('ghost://') ? trimmed : `ghost://${trimmed}`;
+  if (trimmed.includes('project')) return 'pac://projects';
+  if (trimmed.includes('contact')) return 'pac://contact';
+  return trimmed.startsWith('pac://') ? trimmed : `pac://${trimmed}`;
 };
 
 export function BrowserApp() {
-  const [url, setUrl] = useState('ghost://home');
-  const [draft, setDraft] = useState('ghost://home');
-  const openApp = useGhostStore((state) => state.openApp);
+  const [url, setUrl] = useState('pac://home');
+  const [draft, setDraft] = useState('pac://home');
+  const openApp = usePacStore((state) => state.openApp);
   const page = useMemo(() => pages[url], [url]);
 
   const submit = (event: FormEvent) => {
@@ -61,8 +61,8 @@ export function BrowserApp() {
           type="button"
           className="grid h-8 w-8 place-items-center rounded-[6px] border border-white/20 bg-white/10 text-sm text-white hover:bg-white/20 transition-colors"
           onClick={() => {
-            setUrl('ghost://home');
-            setDraft('ghost://home');
+            setUrl('pac://home');
+            setDraft('pac://home');
           }}
           title="Home"
         >
@@ -72,7 +72,7 @@ export function BrowserApp() {
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
           className="h-8 min-w-0 flex-1 rounded-[6px] border border-white/20 bg-black/50 px-3 font-mono text-xs text-white outline-none focus:border-white focus:shadow-[0_0_10px_rgba(255,255,255,0.2)] transition-all"
-          aria-label="Ghost browser URL"
+          aria-label="Pac browser URL"
         />
         <button
           type="submit"
@@ -82,7 +82,7 @@ export function BrowserApp() {
         </button>
       </form>
 
-      <div className="ghost-scrollbar min-h-0 flex-1 overflow-y-auto p-5 bg-black">
+      <div className="pac-scrollbar min-h-0 flex-1 overflow-y-auto p-5 bg-black">
         {page ? (
           <div className="mx-auto max-w-3xl">
             <p className="font-mono text-xs text-white/50 tracking-widest uppercase">{url}</p>
@@ -108,8 +108,8 @@ export function BrowserApp() {
             <p className="font-mono text-xs text-white/50 uppercase tracking-widest">404 route not mounted</p>
             <h3 className="mt-3 text-xl font-bold text-white tracking-wider uppercase">{url}</h3>
             <p className="mt-2 text-sm leading-6 text-slate-300 font-light">
-              Ghost Browser only has local routes. Try ghost://home, ghost://projects, or
-              ghost://contact.
+              Pac Browser only has local routes. Try pac://home, pac://projects, or
+              pac://contact.
             </p>
           </div>
         )}

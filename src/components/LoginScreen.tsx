@@ -7,7 +7,7 @@ type LoginScreenProps = {
 };
 
 const username = 'fardin';
-const password = 'ghostdragon';
+const password = 'pacdragon';
 
 export function LoginScreen({ onComplete }: LoginScreenProps) {
   const [typedUser, setTypedUser] = useState('');

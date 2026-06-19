@@ -61,7 +61,7 @@ export function GamesHub() {
     const info = GAMES.find(g => g.id === activeGame)!;
 
     return (
-      <div className="ghost-scrollbar h-full overflow-y-auto bg-transparent p-4 text-slate-100">
+      <div className="pac-scrollbar h-full overflow-y-auto bg-transparent p-4 text-slate-100">
         <div className="mb-5 flex items-center gap-3">
           <button
             onClick={() => setActiveGame(null)}
@@ -71,7 +71,7 @@ export function GamesHub() {
             <ArrowLeft size={20} />
           </button>
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">Ghost Arcade</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">Pac Arcade</p>
             <h3 className="text-lg font-bold uppercase tracking-wider text-white">
               {info.emoji} {info.title}
             </h3>
@@ -83,9 +83,9 @@ export function GamesHub() {
   }
 
   return (
-    <div className="ghost-scrollbar flex h-full flex-col overflow-y-auto bg-transparent p-6 text-slate-100">
+    <div className="pac-scrollbar flex h-full flex-col overflow-y-auto bg-transparent p-6 text-slate-100">
       <div className="mb-6">
-        <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">Ghost Arcade</p>
+        <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">Pac Arcade</p>
         <h3 className="mt-1 text-2xl font-bold uppercase tracking-wider text-white">Choose a Game</h3>
         <p className="mt-1 text-sm text-white/40 font-light">{GAMES.length} games available • All scores saved locally</p>
       </div>

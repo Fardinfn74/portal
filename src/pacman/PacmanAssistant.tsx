@@ -1,6 +1,6 @@
 import { FormEvent, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useGhostStore } from '../store/useGhostStore';
+import { usePacStore } from '../store/usePacStore';
 import type { AppId } from '../core/types';
 import { GasterBlasterIcon } from '../components/GasterBlasterIcon';
 
@@ -14,7 +14,7 @@ const actionMap: Array<{ keys: string[]; appId: AppId; response: string }> = [
   {
     keys: ['project', 'projects'],
     appId: 'projects',
-    response: 'Opening the Projects folder. The GhostOS build and CTF tools are in there.',
+    response: 'Opening the Projects folder. The PacOS build and CTF tools are in there.',
   },
   {
     keys: ['resume', 'cv'],
@@ -39,7 +39,7 @@ const actionMap: Array<{ keys: string[]; appId: AppId; response: string }> = [
   {
     keys: ['play', 'game', 'games', 'snake'],
     appId: 'games',
-    response: 'Opening Ghost Arcade. Snake is ready.',
+    response: 'Opening Pac Arcade. Snake is ready.',
   },
 ];
 
@@ -55,8 +55,8 @@ export function PacmanAssistant() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>(initialMessages);
-  const openApp = useGhostStore((state) => state.openApp);
-  const developerMode = useGhostStore((state) => state.developerMode);
+  const openApp = usePacStore((state) => state.openApp);
+  const developerMode = usePacStore((state) => state.developerMode);
 
   const quickActions = useMemo(
     () => [
@@ -137,7 +137,7 @@ export function PacmanAssistant() {
               </button>
             </header>
 
-            <div className="ghost-scrollbar flex-1 space-y-2 overflow-y-auto p-3">
+            <div className="pac-scrollbar flex-1 space-y-2 overflow-y-auto p-3">
               {messages.map((message) => (
                 <div
                   key={message.id}

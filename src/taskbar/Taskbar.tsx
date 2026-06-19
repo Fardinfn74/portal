@@ -1,13 +1,13 @@
 import { appRegistry } from '../apps/appRegistry';
 import { desktopItems } from '../files/desktopItems';
-import { useGhostStore } from '../store/useGhostStore';
+import { usePacStore } from '../store/usePacStore';
 
 export function Taskbar() {
-  const windows = useGhostStore((state) => state.windows);
-  const openApp = useGhostStore((state) => state.openApp);
-  const restoreWindow = useGhostStore((state) => state.restoreWindow);
-  const focusWindow = useGhostStore((state) => state.focusWindow);
-  const developerMode = useGhostStore((state) => state.developerMode);
+  const windows = usePacStore((state) => state.windows);
+  const openApp = usePacStore((state) => state.openApp);
+  const restoreWindow = usePacStore((state) => state.restoreWindow);
+  const focusWindow = usePacStore((state) => state.focusWindow);
+  const developerMode = usePacStore((state) => state.developerMode);
   const time = new Intl.DateTimeFormat(undefined, {
     hour: '2-digit',
     minute: '2-digit',
@@ -22,9 +22,9 @@ export function Taskbar() {
         title="Open Terminal"
       >
         <span className="grid h-5 w-5 place-items-center rounded bg-emerald-300 text-xs font-black text-slate-950">
-          G
+          P
         </span>
-        GhostOS
+        PacOS
       </button>
 
       <div className="hidden h-8 items-center gap-1 border-l border-white/10 pl-2 md:flex">
@@ -45,22 +45,22 @@ export function Taskbar() {
         })}
       </div>
 
-      <div className="ghost-scrollbar flex min-w-0 flex-1 items-center gap-2 overflow-x-auto px-1">
-        {windows.map((ghostWindow) => (
+      <div className="pac-scrollbar flex min-w-0 flex-1 items-center gap-2 overflow-x-auto px-1">
+        {windows.map((pacWindow) => (
           <button
-            key={ghostWindow.id}
+            key={pacWindow.id}
             type="button"
             onClick={() =>
-              ghostWindow.minimized ? restoreWindow(ghostWindow.id) : focusWindow(ghostWindow.id)
+              pacWindow.minimized ? restoreWindow(pacWindow.id) : focusWindow(pacWindow.id)
             }
             className={`h-8 max-w-[180px] shrink-0 truncate rounded-[6px] border px-3 text-xs transition ${
-              ghostWindow.minimized
+              pacWindow.minimized
                 ? 'border-white/10 bg-white/5 text-slate-400'
                 : 'border-emerald-300/20 bg-white/10 text-slate-100 hover:bg-white/14'
             }`}
-            title={ghostWindow.title}
+            title={pacWindow.title}
           >
-            {ghostWindow.title}
+            {pacWindow.title}
           </button>
         ))}
       </div>

@@ -91,7 +91,7 @@ export const appRegistry: Record<AppId, AppDefinition> = {
     iconText: 'R',
   },
   terminal: {
-    title: 'Ghost Terminal',
+    title: 'Pac Terminal',
     label: 'Terminal',
     kind: 'app',
     defaultSize: { w: 780, h: 470 },
@@ -107,7 +107,7 @@ export const appRegistry: Record<AppId, AppDefinition> = {
     iconText: '*',
   },
   browser: {
-    title: 'Ghost Browser',
+    title: 'Pac Browser',
     label: 'Browser',
     kind: 'app',
     defaultSize: { w: 860, h: 560 },

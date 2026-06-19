@@ -18,9 +18,9 @@ export function DesktopIcon({ item, onOpen }: DesktopIconProps) {
       title={`Open ${item.label}`}
     >
       {item.kind === 'folder' ? (
-        <span className="ghost-folder-icon mt-1" style={{ backgroundColor: app.accent }} />
+        <span className="pac-folder-icon mt-1" style={{ backgroundColor: app.accent }} />
       ) : (
-        <span className="ghost-app-icon" style={{ boxShadow: `0 0 22px ${app.accent}44` }}>
+        <span className="pac-app-icon" style={{ boxShadow: `0 0 22px ${app.accent}44` }}>
           {app.iconText}
         </span>
       )}

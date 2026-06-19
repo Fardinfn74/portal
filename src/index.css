@@ -47,22 +47,22 @@ button {
   width: 100% !important;
 }
 
-.ghost-scrollbar {
+.pac-scrollbar {
   scrollbar-color: rgba(148, 163, 184, 0.55) transparent;
   scrollbar-width: thin;
 }
 
-.ghost-scrollbar::-webkit-scrollbar {
+.pac-scrollbar::-webkit-scrollbar {
   height: 8px;
   width: 8px;
 }
 
-.ghost-scrollbar::-webkit-scrollbar-thumb {
+.pac-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(148, 163, 184, 0.55);
   border-radius: 999px;
 }
 
-.ghost-folder-icon {
+.pac-folder-icon {
   position: relative;
   width: 42px;
   height: 32px;
@@ -72,7 +72,7 @@ button {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-.ghost-folder-icon::before {
+.pac-folder-icon::before {
   content: "";
   position: absolute;
   top: -8px;
@@ -85,7 +85,7 @@ button {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.ghost-app-icon {
+.pac-app-icon {
   display: grid;
   width: 42px;
   height: 42px;

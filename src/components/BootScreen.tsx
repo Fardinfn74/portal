@@ -6,13 +6,13 @@ type BootScreenProps = {
 };
 
 const bootLines = [
-  '[  OK  ] Loading GhostOS kernel modules',
+  '[  OK  ] Loading PacOS kernel modules',
   '[  OK  ] Mounting /home/fardin portfolio volume',
   '[  OK  ] Starting xterm service',
   '[  OK  ] Initializing window compositor',
   '[  OK  ] Loading Pacman assistant daemon',
-  '[  OK  ] Calibrating ghost dragon cursor sensor',
-  '[  OK  ] Starting GhostOS desktop target',
+  '[  OK  ] Calibrating pac dragon cursor sensor',
+  '[  OK  ] Starting PacOS desktop target',
 ];
 
 export function BootScreen({ onComplete }: BootScreenProps) {
@@ -41,7 +41,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
     <section className="grid h-full w-full place-items-center bg-black">
       <div className="w-full max-w-4xl px-6 font-mono">
         <div className="mb-8 flex items-center justify-between border-b border-white/20 pb-3 text-xs text-white/80">
-          <span>GhostOS secure boot</span>
+          <span>PacOS secure boot</span>
           <span>tty1</span>
         </div>
 
@@ -79,7 +79,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               className="font-mono text-3xl font-bold tracking-[0.2em] uppercase text-white sm:text-5xl drop-shadow-[0_0_25px_rgba(255,255,255,1)]"
             >
-              GhostOS
+              PacOS
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0 }}

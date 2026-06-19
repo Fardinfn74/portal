@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { desktopItems } from '../../files/desktopItems';
-import { useGhostStore } from '../../store/useGhostStore';
+import { usePacStore } from '../../store/usePacStore';
 import { AnimatedWallpaper } from './AnimatedWallpaper';
 import { DragonAssistant } from './DragonAssistant';
 import { DesktopIcon } from './DesktopIcon';
@@ -14,9 +14,9 @@ import { useKonamiCode } from '../../utils/useKonamiCode';
 import { sounds } from '../../utils/sound';
 
 export function Desktop() {
-  const openApp = useGhostStore((state) => state.openApp);
-  const setDeveloperMode = useGhostStore((state) => state.setDeveloperMode);
-  const pushToast = useGhostStore((state) => state.pushToast);
+  const openApp = usePacStore((state) => state.openApp);
+  const setDeveloperMode = usePacStore((state) => state.setDeveloperMode);
+  const pushToast = usePacStore((state) => state.pushToast);
 
   useKonamiCode(() => {
     setDeveloperMode(true);

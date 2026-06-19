@@ -1,11 +1,11 @@
 import { useMemo, useRef, type CSSProperties } from 'react';
 import { motion } from 'framer-motion';
-import type { GhostWindow, Position, Size } from '../core/types';
-import { useGhostStore } from '../store/useGhostStore';
+import type { PacWindow, Position, Size } from '../core/types';
+import { usePacStore } from '../store/usePacStore';
 import { AppWindowContent } from '../windows/AppWindowContent';
 
 type WindowFrameProps = {
-  window: GhostWindow;
+  window: PacWindow;
 };
 
 type DragState = {
@@ -24,20 +24,20 @@ type ResizeState = {
 
 const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
 
-export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
-  const focusWindow = useGhostStore((state) => state.focusWindow);
-  const moveWindow = useGhostStore((state) => state.moveWindow);
-  const resizeWindow = useGhostStore((state) => state.resizeWindow);
-  const closeWindow = useGhostStore((state) => state.closeWindow);
-  const minimizeWindow = useGhostStore((state) => state.minimizeWindow);
-  const toggleMaximize = useGhostStore((state) => state.toggleMaximize);
+export function WindowFrame({ window: pacWindow }: WindowFrameProps) {
+  const focusWindow = usePacStore((state) => state.focusWindow);
+  const moveWindow = usePacStore((state) => state.moveWindow);
+  const resizeWindow = usePacStore((state) => state.resizeWindow);
+  const closeWindow = usePacStore((state) => state.closeWindow);
+  const minimizeWindow = usePacStore((state) => state.minimizeWindow);
+  const toggleMaximize = usePacStore((state) => state.toggleMaximize);
   const dragRef = useRef<DragState | null>(null);
   const resizeRef = useRef<ResizeState | null>(null);
 
   const style = useMemo<CSSProperties>(() => {
-    if (ghostWindow.maximized) {
+    if (pacWindow.maximized) {
       return {
-        zIndex: ghostWindow.zIndex,
+        zIndex: pacWindow.zIndex,
         left: 8,
         top: 8,
         width: 'calc(100vw - 16px)',
@@ -46,33 +46,33 @@ export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
     }
 
     return {
-      zIndex: ghostWindow.zIndex,
-      left: ghostWindow.position.x,
-      top: ghostWindow.position.y,
-      width: ghostWindow.size.w,
-      height: ghostWindow.size.h,
+      zIndex: pacWindow.zIndex,
+      left: pacWindow.position.x,
+      top: pacWindow.position.y,
+      width: pacWindow.size.w,
+      height: pacWindow.size.h,
     };
   }, [
-    ghostWindow.maximized,
-    ghostWindow.position.x,
-    ghostWindow.position.y,
-    ghostWindow.size.h,
-    ghostWindow.size.w,
-    ghostWindow.zIndex,
+    pacWindow.maximized,
+    pacWindow.position.x,
+    pacWindow.position.y,
+    pacWindow.size.h,
+    pacWindow.size.w,
+    pacWindow.zIndex,
   ]);
 
   const onDragPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (event.button !== 0 || ghostWindow.maximized) {
+    if (event.button !== 0 || pacWindow.maximized) {
       return;
     }
 
-    focusWindow(ghostWindow.id);
+    focusWindow(pacWindow.id);
     event.currentTarget.setPointerCapture(event.pointerId);
     dragRef.current = {
       pointerId: event.pointerId,
       startX: event.clientX,
       startY: event.clientY,
-      startPosition: ghostWindow.position,
+      startPosition: pacWindow.position,
     };
   };
 
@@ -82,9 +82,9 @@ export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
       return;
     }
 
-    const maxX = Math.max(12, globalThis.window.innerWidth - ghostWindow.size.w - 12);
-    const maxY = Math.max(12, globalThis.window.innerHeight - ghostWindow.size.h - 58);
-    moveWindow(ghostWindow.id, {
+    const maxX = Math.max(12, globalThis.window.innerWidth - pacWindow.size.w - 12);
+    const maxY = Math.max(12, globalThis.window.innerHeight - pacWindow.size.h - 58);
+    moveWindow(pacWindow.id, {
       x: clamp(drag.startPosition.x + event.clientX - drag.startX, 8, maxX),
       y: clamp(drag.startPosition.y + event.clientY - drag.startY, 8, maxY),
     });
@@ -98,18 +98,18 @@ export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
   };
 
   const onResizePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (event.button !== 0 || ghostWindow.maximized) {
+    if (event.button !== 0 || pacWindow.maximized) {
       return;
     }
 
     event.stopPropagation();
-    focusWindow(ghostWindow.id);
+    focusWindow(pacWindow.id);
     event.currentTarget.setPointerCapture(event.pointerId);
     resizeRef.current = {
       pointerId: event.pointerId,
       startX: event.clientX,
       startY: event.clientY,
-      startSize: ghostWindow.size,
+      startSize: pacWindow.size,
     };
   };
 
@@ -119,7 +119,7 @@ export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
       return;
     }
 
-    resizeWindow(ghostWindow.id, {
+    resizeWindow(pacWindow.id, {
       w: clamp(resize.startSize.w + event.clientX - resize.startX, 360, globalThis.window.innerWidth - 30),
       h: clamp(resize.startSize.h + event.clientY - resize.startY, 280, globalThis.window.innerHeight - 68),
     });
@@ -140,8 +140,8 @@ export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.96 }}
       transition={{ duration: 0.18 }}
-      onPointerDown={() => focusWindow(ghostWindow.id)}
-      aria-label={ghostWindow.title}
+      onPointerDown={() => focusWindow(pacWindow.id)}
+      aria-label={pacWindow.title}
     >
       <div
         className="flex h-10 shrink-0 cursor-grab items-center justify-between border-b border-white/20 bg-white/20 px-3 active:cursor-grabbing"
@@ -149,12 +149,12 @@ export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
         onPointerMove={onDragPointerMove}
         onPointerUp={stopDrag}
         onPointerCancel={stopDrag}
-        onDoubleClick={() => toggleMaximize(ghostWindow.id)}
+        onDoubleClick={() => toggleMaximize(pacWindow.id)}
       >
         <div className="flex min-w-0 items-center gap-2">
           <div className="h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
           <h2 className="truncate font-mono text-xs font-semibold text-white uppercase tracking-wider">
-            {ghostWindow.title}
+            {pacWindow.title}
           </h2>
         </div>
 
@@ -163,8 +163,8 @@ export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
             type="button"
             className="grid h-6 w-6 place-items-center rounded-[5px] text-white transition hover:bg-white/20"
             onPointerDown={(event) => event.stopPropagation()}
-            onClick={() => minimizeWindow(ghostWindow.id)}
-            aria-label={`Minimize ${ghostWindow.title}`}
+            onClick={() => minimizeWindow(pacWindow.id)}
+            aria-label={`Minimize ${pacWindow.title}`}
             title="Minimize"
           >
             -
@@ -173,18 +173,18 @@ export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
             type="button"
             className="grid h-6 w-6 place-items-center rounded-[5px] text-white transition hover:bg-white/20"
             onPointerDown={(event) => event.stopPropagation()}
-            onClick={() => toggleMaximize(ghostWindow.id)}
-            aria-label={`${ghostWindow.maximized ? 'Restore' : 'Maximize'} ${ghostWindow.title}`}
-            title={ghostWindow.maximized ? 'Restore' : 'Maximize'}
+            onClick={() => toggleMaximize(pacWindow.id)}
+            aria-label={`${pacWindow.maximized ? 'Restore' : 'Maximize'} ${pacWindow.title}`}
+            title={pacWindow.maximized ? 'Restore' : 'Maximize'}
           >
-            {ghostWindow.maximized ? '▣' : '□'}
+            {pacWindow.maximized ? '▣' : '□'}
           </button>
           <button
             type="button"
             className="grid h-6 w-6 place-items-center rounded-[5px] text-white transition hover:bg-white/20 hover:text-red-400"
             onPointerDown={(event) => event.stopPropagation()}
-            onClick={() => closeWindow(ghostWindow.id)}
-            aria-label={`Close ${ghostWindow.title}`}
+            onClick={() => closeWindow(pacWindow.id)}
+            aria-label={`Close ${pacWindow.title}`}
             title="Close"
           >
             x
@@ -193,10 +193,10 @@ export function WindowFrame({ window: ghostWindow }: WindowFrameProps) {
       </div>
 
       <div className="min-h-0 flex-1 overflow-hidden">
-        <AppWindowContent appId={ghostWindow.appId} />
+        <AppWindowContent appId={pacWindow.appId} />
       </div>
 
-      {!ghostWindow.maximized && (
+      {!pacWindow.maximized && (
         <div
           className="absolute bottom-0 right-0 h-5 w-5 cursor-nwse-resize"
           onPointerDown={onResizePointerDown}

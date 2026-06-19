@@ -1,13 +1,13 @@
 import { appRegistry } from '../../apps/appRegistry';
 import { desktopItems } from '../../files/desktopItems';
-import { useGhostStore } from '../../store/useGhostStore';
+import { usePacStore } from '../../store/usePacStore';
 import { Terminal, Gamepad2, Globe, User, FolderGit2, FileText, Folder, Image, Trash2 } from 'lucide-react';
 import type { AppId } from '../../core/types';
 import { sounds } from '../../utils/sound';
 
 export function Dock() {
-  const openApp = useGhostStore((state) => state.openApp);
-  const windows = useGhostStore((state) => state.windows);
+  const openApp = usePacStore((state) => state.openApp);
+  const windows = usePacStore((state) => state.windows);
   
   const dockItems: { appId: AppId; kind: string }[] = [
     { appId: 'fileExplorer', kind: 'app' },

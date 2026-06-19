@@ -26,7 +26,7 @@ export type Size = {
   h: number;
 };
 
-export type GhostWindow = {
+export type PacWindow = {
   id: string;
   appId: AppId;
   title: string;
