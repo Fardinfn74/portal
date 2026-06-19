@@ -3,11 +3,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Desktop } from './components/desktop/Desktop';
 import { LoginScreen } from './components/LoginScreen';
 import { BootScreen } from './components/BootScreen';
+import { PreBootLoading } from './components/PreBootLoading';
 
-type Phase = 'boot' | 'login' | 'desktop';
+type Phase = 'preboot' | 'boot' | 'login' | 'desktop';
 
 export default function App() {
-  const [phase, setPhase] = useState<Phase>('boot');
+  const [phase, setPhase] = useState<Phase>('preboot');
 
   useEffect(() => {
     const originalTitle = document.title;
@@ -20,8 +21,20 @@ export default function App() {
 
   return (
     <>
+      <div className="crt-overlay" />
       <main className="h-screen w-screen overflow-hidden bg-black text-slate-100">
         <AnimatePresence mode="wait">
+          {phase === 'preboot' && (
+            <motion.div
+              key="preboot"
+              className="h-full w-full"
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <PreBootLoading onComplete={() => setPhase('boot')} />
+            </motion.div>
+          )}
+
           {phase === 'boot' && (
             <motion.div
               key="boot"

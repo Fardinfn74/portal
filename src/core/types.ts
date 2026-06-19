@@ -14,7 +14,16 @@ export type AppId =
   | 'browser'
   | 'fileExplorer'
   | 'gallery'
-  | 'trash';
+  | 'trash'
+  | 'cert_01'
+  | 'cert_02'
+  | 'cert_03'
+  | 'cert_04'
+  | 'cert_05'
+  | 'cert_06'
+  | 'cert_07'
+  | 'cert_08'
+  | 'imageViewer';
 
 export type Position = {
   x: number;

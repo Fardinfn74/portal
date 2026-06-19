@@ -6,19 +6,18 @@ type BootScreenProps = {
 };
 
 const bootLines = [
-  '[  OK  ] Loading PacOS kernel modules',
-  '[  OK  ] Mounting /home/fardin portfolio volume',
-  '[  OK  ] Starting xterm service',
-  '[  OK  ] Initializing window compositor',
-  '[  OK  ] Loading Pacman assistant daemon',
-  '[  OK  ] Calibrating pac dragon cursor sensor',
-  '[  OK  ] Starting PacOS desktop target',
+  '>> INITIALIZING PACOS KERNEL 6.12.0-PORTFOLIO',
+  '>> CHECKING SYSTEM INTEGRITY... DONE',
+  '>> MOUNTING VOLUMES [ /HOME/FARDIN ]... OK',
+  '>> STARTING WINDOW_COMPOSITOR.BIN',
+  '>> LOADING DESKTOP_ENVIRONMENT',
+  '>> CONNECTING TO PACMAN_DAEMON',
+  '>> SYSTEM READY. REDIRECTING TO LOGIN_SHELL...',
 ];
 
 export function BootScreen({ onComplete }: BootScreenProps) {
   const [visibleLines, setVisibleLines] = useState<string[]>([]);
-  const [showLogo, setShowLogo] = useState(false);
-  const timings = useMemo(() => bootLines.map((_, index) => 220 + index * 230), []);
+  const timings = useMemo(() => bootLines.map((_, index) => 150 + index * 200), []);
 
   useEffect(() => {
     const timers = timings.map((time, index) =>
@@ -27,12 +26,10 @@ export function BootScreen({ onComplete }: BootScreenProps) {
       }, time),
     );
 
-    const logoTimer = window.setTimeout(() => setShowLogo(true), 2050);
-    const completeTimer = window.setTimeout(onComplete, 3350);
+    const completeTimer = window.setTimeout(onComplete, bootLines.length * 200 + 600);
 
     return () => {
       timers.forEach(window.clearTimeout);
-      window.clearTimeout(logoTimer);
       window.clearTimeout(completeTimer);
     };
   }, [onComplete, timings]);
@@ -40,57 +37,39 @@ export function BootScreen({ onComplete }: BootScreenProps) {
   return (
     <section className="grid h-full w-full place-items-center bg-black">
       <div className="w-full max-w-4xl px-6 font-mono">
-        <div className="mb-8 flex items-center justify-between border-b border-white/20 pb-3 text-xs text-white/80">
-          <span>PacOS secure boot</span>
-          <span>tty1</span>
+        <div className="mb-12 flex items-center justify-between border-b border-white/10 pb-4 text-[10px] tracking-[0.2em] uppercase text-white/40">
+          <span className="flex items-center gap-2">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+            Secure System Boot
+          </span>
+          <span>TTY-01</span>
         </div>
 
-        <div className="min-h-64 space-y-2 text-sm text-white font-light sm:text-base">
-          {visibleLines.map((line) => (
+        <div className="min-h-64 space-y-3 font-mono text-sm sm:text-base">
+          {visibleLines.map((line, idx) => (
             <motion.p
               key={line}
-              initial={{ opacity: 0, x: -15, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3 }}
+              className={`${
+                idx === visibleLines.length - 1
+                  ? 'text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]'
+                  : 'text-white/80'
+              }`}
             >
+              <span className="mr-3 opacity-30">[{idx.toString().padStart(2, '0')}]</span>
               {line}
             </motion.p>
           ))}
           <motion.p
-            animate={{ opacity: [0.35, 1, 0.35], textShadow: ["0 0 5px #fff", "0 0 15px #fff", "0 0 5px #fff"] }}
-            transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,1)]"
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 0.8, repeat: Infinity }}
+            className="text-emerald-500 drop-shadow-[0_0_10px_#10b981]"
           >
             _
           </motion.p>
         </div>
-
-        {showLogo && (
-          <motion.div
-            initial={{ opacity: 0, y: 30, filter: 'blur(12px)', scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)', scale: 1 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 text-center"
-          >
-            <motion.h1 
-              initial={{ textShadow: "0 0 0px rgba(255,255,255,0)" }}
-              animate={{ textShadow: ["0 0 10px rgba(255,255,255,0.5)", "0 0 30px rgba(255,255,255,0.9)", "0 0 10px rgba(255,255,255,0.5)"] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="font-mono text-3xl font-bold tracking-[0.2em] uppercase text-white sm:text-5xl drop-shadow-[0_0_25px_rgba(255,255,255,1)]"
-            >
-              PacOS
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 1 }}
-              className="mt-4 text-sm font-light tracking-widest text-white/70 uppercase"
-            >
-              launching portfolio desktop session
-            </motion.p>
-          </motion.div>
-        )}
       </div>
     </section>
   );
