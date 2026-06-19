@@ -8,6 +8,7 @@ import { sounds } from '../../utils/sound';
 export function Dock() {
   const openApp = usePacStore((state) => state.openApp);
   const windows = usePacStore((state) => state.windows);
+  const isAnyMaximized = windows.some(w => w.maximized && !w.minimized);
   
   const dockItems: { appId: AppId; kind: string }[] = [
     { appId: 'fileExplorer', kind: 'app' },
@@ -40,7 +41,7 @@ export function Dock() {
   };
 
   return (
-    <div className="fixed bottom-4 left-1/2 z-[9000] flex -translate-x-1/2 items-end gap-3 rounded-[2rem] bg-white/5 p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-3xl border border-white/10">
+    <div className={`fixed bottom-4 left-1/2 z-[9000] flex -translate-x-1/2 items-end gap-3 rounded-[2rem] bg-white/5 p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-3xl border border-white/10 transition-transform duration-500 ${isAnyMaximized ? 'translate-y-[150%]' : 'translate-y-0'}`}>
       {dockItems.map((item) => {
         const app = appRegistry[item.appId];
         const isOpen = windows.some(w => w.appId === item.appId);

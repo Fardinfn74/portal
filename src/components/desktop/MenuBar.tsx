@@ -6,6 +6,7 @@ export function MenuBar() {
   const [time, setTime] = useState<string>('');
   const [date, setDate] = useState<string>('');
   const windows = usePacStore((state) => state.windows);
+  const isAnyMaximized = windows.some(w => w.maximized && !w.minimized);
 
   const activeWindow = windows.reduce((highest, current) => {
     if (current.minimized) return highest;
@@ -40,7 +41,7 @@ export function MenuBar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 z-[9999] flex h-7 w-full items-center justify-between bg-black/40 px-3 text-sm text-slate-100 backdrop-blur-md border-b border-white/10">
+    <header className={`fixed top-0 left-0 z-[9999] flex h-7 w-full items-center justify-between bg-black/40 px-3 text-sm text-slate-100 backdrop-blur-md border-b border-white/10 transition-transform duration-500 ${isAnyMaximized ? '-translate-y-full' : 'translate-y-0'}`}>
       <div className="flex h-full items-center gap-4">
         <button className="flex h-full items-center px-1 hover:bg-white/10 transition-colors rounded">
           <Command size={14} className="opacity-90" />

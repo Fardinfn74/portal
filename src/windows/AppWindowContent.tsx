@@ -4,6 +4,7 @@ import { FileExplorerWindow } from './FileExplorerWindow';
 import { GamesHub } from './GamesHub';
 import { TerminalApp } from '../terminal/TerminalApp';
 import { fileSystem } from '../files/fileData';
+import { ImageViewerWindow } from './ImageViewerWindow';
 
 type AppWindowContentProps = {
   appId: AppId;
@@ -24,6 +25,14 @@ export function AppWindowContent({ appId }: AppWindowContentProps) {
 
   if (appId in fileSystem) {
     return <FileExplorerWindow appId={appId as keyof typeof fileSystem} />;
+  }
+
+  if (appId.startsWith('cert_')) {
+    const certIndex = parseInt(appId.split('_')[1]) - 1;
+    const cert = fileSystem.certificates.entries[certIndex];
+    if (cert) {
+      return <ImageViewerWindow src={cert.fields.url as string} alt={cert.name} />;
+    }
   }
 
   return (

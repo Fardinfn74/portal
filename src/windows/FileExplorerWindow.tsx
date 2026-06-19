@@ -51,7 +51,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
               <img
                 src="/pfp.jpg"
                 alt="Profile"
-                className="w-32 h-32 rounded-full object-cover border-2 border-white/50 shadow-[0_0_20px_rgba(255,255,255,0.3)] relative z-10"
+                className="w-48 h-48 rounded-full object-cover border-2 border-white/50 shadow-[0_0_30px_rgba(255,255,255,0.4)] relative z-10"
               />
             </motion.div>
           </div>
@@ -419,6 +419,8 @@ Hackathons have helped me improve problem-solving, teamwork, communication, and 
   );
 }
 
+import { appRegistry } from '../apps/appRegistry';
+
 function RootExplorer({ onNavigate }: { onNavigate: (folderId: FolderAppId) => void }) {
   const folders: FolderAppId[] = [
     'about', 'projects', 'skills', 'hackathons', 
@@ -432,21 +434,19 @@ function RootExplorer({ onNavigate }: { onNavigate: (folderId: FolderAppId) => v
         <p className="font-mono text-xs uppercase text-white/50 tracking-widest">Root / File Explorer</p>
       </div>
       <div className="flex-1 overflow-y-auto p-6 pac-scrollbar">
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6">
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-x-4 gap-y-8">
           {folders.map((f) => {
             const b = fileSystem[f];
+            const app = appRegistry[f];
             return (
               <button
                 key={f}
                 onClick={() => onNavigate(f)}
-                className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-transparent p-4 transition-all hover:bg-white/5 hover:border-white/10 group"
+                className="group flex flex-col items-center justify-start gap-2 rounded-[6px] border border-transparent p-2 text-center transition hover:border-white/15 hover:bg-white/8"
+                title={`Open ${b.label}`}
               >
-                <Folder
-                  size={56}
-                  strokeWidth={1}
-                  className="text-blue-100/80 transition-transform duration-300 group-hover:scale-110 group-hover:text-blue-100"
-                />
-                <span className="font-mono text-xs tracking-wider text-white/70 group-hover:text-white">
+                <span className="pac-folder-icon scale-110" style={{ backgroundColor: app?.accent || '#ffffff' }} />
+                <span className="max-w-full break-words text-[11px] font-medium leading-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
                   {b.label}
                 </span>
               </button>
