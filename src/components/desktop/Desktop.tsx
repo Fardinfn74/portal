@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { desktopItems } from '../../files/desktopItems';
 import { usePacStore } from '../../store/usePacStore';
+import { fileSystem } from '../../files/fileData';
 import { AnimatedWallpaper } from './AnimatedWallpaper';
 import { DragonAssistant } from './DragonAssistant';
 import { DesktopIcon } from './DesktopIcon';
@@ -48,6 +49,21 @@ export function Desktop() {
     };
   }, [openApp]);
 
+  const setActiveImage = usePacStore((state) => state.setActiveImage);
+
+  const handleOpen = (appId: string) => {
+    if (appId.startsWith('cert_')) {
+      const certIndex = parseInt(appId.split('_')[1]) - 1;
+      const cert = fileSystem.certificates.entries[certIndex];
+      if (cert) {
+        setActiveImage({ src: cert.fields.url as string, alt: cert.name });
+        openApp('imageViewer');
+        return;
+      }
+    }
+    openApp(appId as any);
+  };
+
   return (
     <section className="relative h-full w-full overflow-hidden bg-black">
       <AnimatedWallpaper />
@@ -57,7 +73,7 @@ export function Desktop() {
 
       <div className="absolute left-4 top-12 z-10 grid max-h-[calc(100vh-100px)] grid-flow-col grid-rows-8 gap-x-6 gap-y-4 sm:grid-rows-8">
         {desktopItems.map((item) => (
-          <DesktopIcon key={item.appId} item={item} onOpen={() => openApp(item.appId)} />
+          <DesktopIcon key={item.appId} item={item} onOpen={() => handleOpen(item.appId)} />
         ))}
       </div>
 
