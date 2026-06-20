@@ -17,9 +17,10 @@ type FolderViewerProps = {
   folderId: FolderAppId;
   canGoBack: boolean;
   onBack: () => void;
+  onNavigate?: (id: FolderAppId) => void;
 };
 
-function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
+function FolderViewer({ folderId, canGoBack, onBack, onNavigate }: FolderViewerProps) {
   const openApp = usePacStore((s) => s.openApp);
   const setActiveImage = usePacStore((s) => s.setActiveImage);
 
@@ -34,7 +35,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
         <button 
           onClick={onBack}
           className="absolute top-4 left-4 p-2 rounded-full text-white/30 hover:text-white/80 transition-colors z-10"
-          title="Back to Root"
+          title="Back"
         >
           <ArrowLeft size={24} />
         </button>
@@ -167,8 +168,32 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
       )}
       {folderId === 'gallery' && (
         <div className="h-full w-full overflow-y-auto pac-scrollbar p-8">
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-x-4 gap-y-8">
+            <button
+              onClick={() => onNavigate?.('gallery_basement')}
+              className="group flex flex-col items-center justify-start gap-2 rounded-[6px] border border-transparent p-2 text-center transition hover:border-white/15 hover:bg-white/8"
+            >
+              <span className="pac-folder-icon scale-110" style={{ backgroundColor: '#ffffff' }} />
+              <span className="max-w-full break-words text-[11px] font-medium leading-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                basement
+              </span>
+            </button>
+            <button
+              onClick={() => onNavigate?.('gallery_hackathons')}
+              className="group flex flex-col items-center justify-start gap-2 rounded-[6px] border border-transparent p-2 text-center transition hover:border-white/15 hover:bg-white/8"
+            >
+              <span className="pac-folder-icon scale-110" style={{ backgroundColor: '#ffffff' }} />
+              <span className="max-w-full break-words text-[11px] font-medium leading-tight text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                hackathons
+              </span>
+            </button>
+          </div>
+        </div>
+      )}
+      {(folderId === 'gallery_basement' || folderId === 'gallery_hackathons') && (
+        <div className="h-full w-full overflow-y-auto pac-scrollbar p-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {fileSystem.gallery.entries.map((entry, i) => (
+            {fileSystem[folderId].entries.map((entry, i) => (
               <motion.div
                 key={entry.name}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -536,11 +561,22 @@ export function FileExplorerWindow({ appId }: FileExplorerWindowProps) {
     return <RootExplorer onNavigate={setCurrentFolder} />;
   }
 
+  const handleBack = () => {
+    if (currentFolder === 'gallery_basement' || currentFolder === 'gallery_hackathons') {
+      setCurrentFolder('gallery');
+    } else {
+      setCurrentFolder('fileExplorer');
+    }
+  };
+
+  const canGoBack = appId === 'fileExplorer' || currentFolder === 'gallery_basement' || currentFolder === 'gallery_hackathons';
+
   return (
     <FolderViewer 
       folderId={currentFolder} 
-      canGoBack={appId === 'fileExplorer'} 
-      onBack={() => setCurrentFolder('fileExplorer')} 
+      canGoBack={canGoBack}
+      onBack={handleBack}
+      onNavigate={setCurrentFolder}
     />
   );
 }

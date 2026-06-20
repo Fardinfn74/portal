@@ -146,6 +146,22 @@ export const appRegistry: Record<AppId, AppDefinition> = {
     accent: '#ffffff',
     iconText: 'G',
   },
+  gallery_basement: {
+    title: 'Basement',
+    label: 'Basement',
+    kind: 'folder',
+    defaultSize: { w: 860, h: 600 },
+    accent: '#ffffff',
+    iconText: 'B',
+  },
+  gallery_hackathons: {
+    title: 'Hackathons',
+    label: 'Hackathons',
+    kind: 'folder',
+    defaultSize: { w: 860, h: 600 },
+    accent: '#ffffff',
+    iconText: 'H',
+  },
   welcome: {
     title: 'Welcome',
     label: 'Welcome',

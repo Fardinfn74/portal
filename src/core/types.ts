@@ -16,6 +16,8 @@ export type AppId =
   | 'hackathons'
   | 'blogs'
   | 'gallery'
+  | 'gallery_basement'
+  | 'gallery_hackathons'
   | 'welcome';
 
 export type Position = {
