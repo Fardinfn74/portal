@@ -25,6 +25,13 @@ export function Desktop() {
   });
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      openApp('welcome');
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [openApp]);
+
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (!['Control', 'Shift', 'Alt', 'Meta'].includes(event.key)) {
         sounds.playType();

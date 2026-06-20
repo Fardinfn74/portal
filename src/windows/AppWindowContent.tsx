@@ -26,6 +26,10 @@ export function AppWindowContent({ appId }: AppWindowContentProps) {
     return <BrowserApp />;
   }
 
+  if (appId === 'welcome') {
+    return <FileExplorerWindow appId="welcome" />;
+  }
+
   if (appId in fileSystem) {
     return <FileExplorerWindow appId={appId as keyof typeof fileSystem} />;
   }
