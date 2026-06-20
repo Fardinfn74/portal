@@ -29,7 +29,7 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
   };
 
   return (
-    <div className="h-full w-full bg-transparent relative flex items-center justify-center p-8">
+    <div className="h-full w-full bg-transparent relative flex items-center justify-center">
       {canGoBack && (
         <button 
           onClick={onBack}
@@ -40,6 +40,26 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
         </button>
       )}
 
+      {folderId === 'welcome' && (
+        <div
+          className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-8"
+          style={{ fontFamily: '"Times New Roman", Times, serif' }}
+        >
+          <div className="text-white text-[1.1rem] leading-relaxed space-y-6 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] tracking-wide">
+            <p className="text-2xl">👋 Welcome Visitor,</p>
+
+            <p>I'm Fardin FN — an AI Engineer, IT student, open-source enthusiast, builder, and lifelong learner.</p>
+
+            <p>This isn't just a portfolio; it's my digital workspace. Every window, project, and command tells a story of curiosity, problem-solving, and countless hours spent building intelligent systems.</p>
+
+            <p>Feel free to explore the desktop, open folders, launch applications, or chat with Pacman, my built-in AI assistant, for a guided tour.</p>
+
+            <p>Whether you're a recruiter, developer, collaborator, or simply curious, I hope you enjoy exploring my world as much as I enjoyed building it.</p>
+
+            <p>Welcome to pacOS. Enjoy your stay.</p>
+          </div>
+        </div>
+      )}
       {folderId === 'about' && (
         <div 
           className="max-w-2xl w-full h-full overflow-y-auto pac-scrollbar pt-12 pb-8 px-4"
@@ -59,9 +79,9 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
             >
               <div className="absolute inset-0 rounded-full bg-white/20 blur-xl animate-pulse" />
               <img
-                src="/pfp.png"
+                src="/fardin_pfp.jpg"
                 alt="Profile"
-                className="w-96 h-96 rounded-full object-cover border-2 border-white/50 shadow-[0_0_30px_rgba(255,255,255,0.4)] relative z-10"
+                className="w-80 h-80 rounded-full object-cover border-2 border-white/50 shadow-[0_0_30px_rgba(255,255,255,0.4)] relative z-10"
               />
             </motion.div>
           </div>
@@ -81,6 +101,89 @@ function FolderViewer({ folderId, canGoBack, onBack }: FolderViewerProps) {
               <li>• Software Engineering</li>
             </ul>
             <p>My long-term goal is to build products that solve real-world problems and make technology more accessible to everyone.</p>
+          </div>
+        </div>
+      )}
+      {folderId === 'hackathons' && (
+        <div className="h-full w-full overflow-y-auto pac-scrollbar p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {fileSystem.hackathons.entries.map((entry, i) => (
+              <motion.div
+                key={entry.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-all space-y-3"
+              >
+                <h3 className="text-xl font-bold text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">{entry.name.replace('.json', '')}</h3>
+                <p className="text-white/70 text-sm">{entry.description}</p>
+                <div className="space-y-1">
+                  {Object.entries(entry.fields).map(([key, value]) => (
+                    <p key={key} className="text-xs text-white/50">
+                      <span className="uppercase tracking-widest mr-2">{key}:</span>
+                      <span className="text-white/80">{Array.isArray(value) ? value.join(', ') : value}</span>
+                    </p>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {entry.tags?.map(tag => (
+                    <span key={tag} className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-white/60 uppercase tracking-tighter">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+      {folderId === 'blogs' && (
+        <div className="h-full w-full overflow-y-auto pac-scrollbar p-8">
+          <div className="max-w-2xl mx-auto space-y-8">
+            {fileSystem.blogs.entries.map((entry, i) => (
+              <motion.div
+                key={entry.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="space-y-4"
+                style={{ fontFamily: '"Times New Roman", Times, serif' }}
+              >
+                <h2 className="text-3xl font-bold text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">{entry.fields.intro as string}</h2>
+                <div className="grid grid-cols-2 gap-4">
+                  {(entry.fields.topics as string[]).map(topic => (
+                    <div key={topic} className="p-3 rounded-lg bg-white/5 border border-white/10 text-white/80">
+                      • {topic}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xl italic text-white/60 pt-4 border-t border-white/10">
+                  {entry.fields.note as string}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+      {folderId === 'gallery' && (
+        <div className="h-full w-full overflow-y-auto pac-scrollbar p-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {fileSystem.gallery.entries.map((entry, i) => (
+              <motion.div
+                key={entry.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.05 }}
+                className="aspect-square rounded-lg overflow-hidden border border-white/10 hover:border-white/30 transition-all cursor-pointer group bg-white/5"
+                onClick={() => handleImageClick(entry.fields.url as string, entry.name)}
+              >
+                <img
+                  src={entry.fields.url as string}
+                  alt={entry.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       )}
@@ -393,7 +496,7 @@ Tools
 function RootExplorer({ onNavigate }: { onNavigate: (folderId: FolderAppId) => void }) {
   const folders: FolderAppId[] = [
     'about', 'education', 'skills', 'experience', 'projects',
-    'certificates', 'resume', 'contact'
+    'certificates', 'resume', 'contact', 'hackathons', 'blogs'
   ];
 
   return (

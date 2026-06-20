@@ -12,7 +12,11 @@ export type AppId =
   | 'browser'
   | 'fileExplorer'
   | 'trash'
-  | 'imageViewer';
+  | 'imageViewer'
+  | 'hackathons'
+  | 'blogs'
+  | 'gallery'
+  | 'welcome';
 
 export type Position = {
   x: number;

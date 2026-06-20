@@ -344,4 +344,132 @@ export const fileSystem: Record<
     summary: 'Deleted files.',
     entries: [],
   },
+  hackathons: {
+    label: 'Hackathons',
+    path: '/home/fardin/Hackathons',
+    summary: 'Event history and shipped prototypes.',
+    entries: [
+      {
+        name: 'BRACU-Hack-Fest-2025.json',
+        type: 'hackathon',
+        description: 'Built SafePath AI, a risk-aware route and emergency contact prototype.',
+        fields: {
+          role: 'frontend lead',
+          team_size: '4',
+          result: 'Top 10 finalist sample entry',
+          shipped: ['interactive route dashboard', 'incident form', 'pitch deck demo'],
+        },
+        tags: ['ai', 'safety', 'frontend'],
+      },
+      {
+        name: 'NASA-Space-Apps-Bangladesh-2024.json',
+        type: 'hackathon',
+        description: 'FloodWatch concept using public climate and satellite-inspired visual data.',
+        fields: {
+          role: 'UI engineer',
+          team_size: '5',
+          result: 'regional submission sample entry',
+          shipped: ['risk cards', 'map mock', 'public awareness flow'],
+        },
+        tags: ['climate', 'data', 'maps'],
+      },
+      {
+        name: 'CyberSprint-CTF-2024.json',
+        type: 'competition',
+        description: 'Team-based capture-the-flag practice event covering web, crypto, and forensics.',
+        fields: {
+          role: 'web challenge solver',
+          result: 'practice scoreboard sample',
+          learned: ['payload hygiene', 'writeup discipline', 'basic forensics workflow'],
+        },
+        tags: ['ctf', 'security'],
+      },
+    ],
+  },
+  blogs: {
+    label: 'Blogs',
+    path: '/home/fardin/Blogs',
+    summary: 'Technical articles and project write-ups.',
+    entries: [
+      {
+        name: 'topics.json',
+        type: 'blog-info',
+        description: 'Topics covered in my blogs.',
+        fields: {
+          intro: 'I enjoy sharing my learning journey, development experiences, hackathon stories, AI experiments, Linux customization, and programming tips.',
+          topics: [
+            'Artificial Intelligence',
+            'Linux',
+            'Programming',
+            'Web Development',
+            'Hackathons',
+            'Productivity'
+          ],
+          note: 'Stay tuned—more technical articles and project write-ups are on the way.'
+        },
+        tags: ['blog', 'topics'],
+      },
+    ],
+  },
+  gallery: {
+    label: 'Gallery',
+    path: '/home/fardin/Pictures',
+    summary: 'Photos and screenshots.',
+    entries: [
+      {
+        name: 'image_01.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 1',
+        fields: { url: '/gallery/image_01.jpg' },
+      },
+      {
+        name: 'image_02.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 2',
+        fields: { url: '/gallery/image_02.jpg' },
+      },
+      {
+        name: 'image_03.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 3',
+        fields: { url: '/gallery/image_03.jpg' },
+      },
+      {
+        name: 'image_04.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 4',
+        fields: { url: '/gallery/image_04.jpg' },
+      },
+      {
+        name: 'image_05.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 5',
+        fields: { url: '/gallery/image_05.jpg' },
+      },
+      {
+        name: 'image_06.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 6',
+        fields: { url: '/gallery/image_06.jpg' },
+      },
+      {
+        name: 'image_07.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 7',
+        fields: { url: '/gallery/image_07.jpg' },
+      },
+      {
+        name: 'image_08.jpg',
+        type: 'image/jpeg',
+        description: 'Gallery photo 8',
+        fields: { url: '/gallery/image_08.jpg' },
+      },
+    ],
+  },
+  welcome: {
+    label: 'Welcome',
+    path: '/home/fardin/Welcome',
+    summary: 'System welcome message.',
+    entries: [],
+  },
 };
