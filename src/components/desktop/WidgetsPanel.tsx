@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { Cloud, Sun, Battery, HardDrive, Cpu, Activity, Paintbrush, Sparkles } from 'lucide-react';
 import { usePacStore } from '../../store/usePacStore';
 
+import { useIsMobile } from '../../utils/useIsMobile';
+
 export function WidgetsPanel() {
+  const isMobile = useIsMobile();
   const [time, setTime] = useState(new Date());
 
   const dragonEnabled = usePacStore((state) => state.dragonEnabled);
@@ -18,6 +21,8 @@ export function WidgetsPanel() {
   const month = time.toLocaleString('default', { month: 'long' });
   const day = time.getDate();
   const dayName = time.toLocaleString('default', { weekday: 'long' });
+
+  if (isMobile) return null;
 
   return (
     <aside className="absolute right-4 top-12 z-[5] flex w-80 flex-col gap-4">

@@ -4,8 +4,10 @@ import { usePacStore } from '../../store/usePacStore';
 import { Terminal, Gamepad2, Globe, User, FolderGit2, FileText, Folder, Image, Trash2 } from 'lucide-react';
 import type { AppId } from '../../core/types';
 import { sounds } from '../../utils/sound';
+import { useIsMobile } from '../../utils/useIsMobile';
 
 export function Dock() {
+  const isMobile = useIsMobile();
   const openApp = usePacStore((state) => state.openApp);
   const windows = usePacStore((state) => state.windows);
   const isAnyMaximized = windows.some(w => w.maximized && !w.minimized);
@@ -41,7 +43,7 @@ export function Dock() {
   };
 
   return (
-    <div className={`fixed bottom-4 left-1/2 z-[9000] flex -translate-x-1/2 items-end gap-3 rounded-[2rem] bg-white/5 p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-3xl border border-white/10 transition-transform duration-500 ${isAnyMaximized ? 'translate-y-[150%]' : 'translate-y-0'}`}>
+    <div className={`fixed bottom-3 sm:bottom-4 left-1/2 z-[9000] flex -translate-x-1/2 items-end gap-2 sm:gap-3 rounded-[1.8rem] sm:rounded-[2rem] bg-white/5 p-2 sm:p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-3xl border border-white/10 transition-transform duration-500 ${!isMobile && isAnyMaximized ? 'translate-y-[150%]' : 'translate-y-0'}`}>
       {dockItems.map((item) => {
         const app = appRegistry[item.appId];
         const isOpen = windows.some(w => w.appId === item.appId);
@@ -49,20 +51,22 @@ export function Dock() {
         return (
           <div key={item.appId} className="relative group flex flex-col items-center">
             {/* Tooltip */}
-            <div className="absolute -top-12 scale-0 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 bg-zinc-800/80 backdrop-blur-xl text-white text-xs py-1.5 px-3 rounded-lg whitespace-nowrap border border-white/10 shadow-xl font-medium tracking-wide">
-              {app.label}
-            </div>
+            {!isMobile && (
+              <div className="absolute -top-12 scale-0 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 bg-zinc-800/80 backdrop-blur-xl text-white text-xs py-1.5 px-3 rounded-lg whitespace-nowrap border border-white/10 shadow-xl font-medium tracking-wide">
+                {app.label}
+              </div>
+            )}
             
             <button
               type="button"
-              className={`flex h-[56px] w-[56px] items-center justify-center rounded-[16px] shadow-lg transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-4 group-hover:scale-[1.2] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] border-t border-l ${getBackgroundForApp(item.appId)}`}
+              className={`flex h-[46px] w-[46px] sm:h-[56px] sm:w-[56px] items-center justify-center rounded-[14px] sm:rounded-[16px] shadow-lg transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${!isMobile ? 'group-hover:-translate-y-4 group-hover:scale-[1.2] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]' : 'active:scale-95'} border-t border-l ${getBackgroundForApp(item.appId)}`}
               onClick={() => { openApp(item.appId); }}
-              onMouseEnter={() => sounds.playHover()}
+              onMouseEnter={() => !isMobile && sounds.playHover()}
             >
               {getIconForApp(item.appId)}
             </button>
             {isOpen && (
-              <div className="absolute -bottom-2 h-1 w-1 rounded-full bg-white opacity-80" />
+              <div className="absolute -bottom-1.5 sm:-bottom-2 h-1 w-1 rounded-full bg-white opacity-80" />
             )}
           </div>
         );

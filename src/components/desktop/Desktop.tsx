@@ -13,8 +13,10 @@ import { PacmanAssistant } from '../../pacman/PacmanAssistant';
 import { ToastStack } from './ToastStack';
 import { useKonamiCode } from '../../utils/useKonamiCode';
 import { sounds } from '../../utils/sound';
+import { useIsMobile } from '../../utils/useIsMobile';
 
 export function Desktop() {
+  const isMobile = useIsMobile();
   const openApp = usePacStore((state) => state.openApp);
   const setDeveloperMode = usePacStore((state) => state.setDeveloperMode);
   const pushToast = usePacStore((state) => state.pushToast);
@@ -78,11 +80,21 @@ export function Desktop() {
       <MenuBar />
       <WidgetsPanel />
 
-      <div className="absolute left-4 top-12 z-10 grid max-h-[calc(100vh-100px)] grid-flow-col grid-rows-8 gap-x-6 gap-y-4 sm:grid-rows-8">
-        {desktopItems.map((item) => (
-          <DesktopIcon key={item.appId} item={item} onOpen={() => handleOpen(item.appId)} />
-        ))}
-      </div>
+      {isMobile ? (
+        <div className="absolute inset-x-0 top-12 bottom-24 z-10 px-4 pt-4 overflow-y-auto">
+          <div className="grid grid-cols-4 gap-y-6 gap-x-2 place-items-center">
+            {desktopItems.map((item) => (
+              <DesktopIcon key={item.appId} item={item} onOpen={() => handleOpen(item.appId)} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="absolute left-4 top-12 z-10 grid max-h-[calc(100vh-100px)] grid-flow-col grid-rows-8 gap-x-6 gap-y-4 sm:grid-rows-8">
+          {desktopItems.map((item) => (
+            <DesktopIcon key={item.appId} item={item} onOpen={() => handleOpen(item.appId)} />
+          ))}
+        </div>
+      )}
 
       <WindowLayer />
       <PacmanAssistant />
