@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import type { PacWindow, Position, Size } from '../core/types';
 import { usePacStore } from '../store/usePacStore';
 import { AppWindowContent } from '../windows/AppWindowContent';
+import { useIsMobile } from '../utils/useIsMobile';
 
 type WindowFrameProps = {
   window: PacWindow;
@@ -32,10 +33,22 @@ export function WindowFrame({ window: pacWindow }: WindowFrameProps) {
   const minimizeWindow = usePacStore((state) => state.minimizeWindow);
   const toggleMaximize = usePacStore((state) => state.toggleMaximize);
   const activeImage = usePacStore((state) => state.activeImage);
+  const isMobile = useIsMobile();
   const dragRef = useRef<DragState | null>(null);
   const resizeRef = useRef<ResizeState | null>(null);
 
   const style = useMemo<CSSProperties>(() => {
+    if (isMobile) {
+      return {
+        zIndex: pacWindow.zIndex,
+        left: 0,
+        top: 0,
+        width: '100vw',
+        height: '100vh',
+        borderRadius: 0,
+      };
+    }
+
     if (pacWindow.maximized) {
       return {
         zIndex: pacWindow.zIndex,
@@ -54,6 +67,7 @@ export function WindowFrame({ window: pacWindow }: WindowFrameProps) {
       height: pacWindow.size.h,
     };
   }, [
+    isMobile,
     pacWindow.maximized,
     pacWindow.position.x,
     pacWindow.position.y,
@@ -135,26 +149,44 @@ export function WindowFrame({ window: pacWindow }: WindowFrameProps) {
 
   return (
     <motion.article
-      className="pointer-events-auto absolute flex min-h-[280px] min-w-[360px] flex-col overflow-hidden rounded-[8px] border border-white/30 bg-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-2xl"
+      className={`pointer-events-auto absolute flex flex-col overflow-hidden bg-black/90 backdrop-blur-2xl ${
+        isMobile
+          ? 'inset-0 h-full w-full border-0 rounded-none'
+          : 'min-h-[280px] min-w-[360px] rounded-[8px] border border-white/30 bg-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.3)]'
+      }`}
       style={style}
-      initial={{ opacity: 0, scale: 0.96, y: 12 }}
+      initial={isMobile ? { opacity: 0, y: 30 } : { opacity: 0, scale: 0.96, y: 12 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.96 }}
-      transition={{ duration: 0.18 }}
+      exit={isMobile ? { opacity: 0, y: 30 } : { opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.2 }}
       onPointerDown={() => focusWindow(pacWindow.id)}
       aria-label={pacWindow.title}
     >
       <div
-        className="flex h-10 shrink-0 cursor-grab items-center justify-between border-b border-white/20 bg-white/20 px-3 active:cursor-grabbing"
-        onPointerDown={onDragPointerDown}
-        onPointerMove={onDragPointerMove}
-        onPointerUp={stopDrag}
-        onPointerCancel={stopDrag}
-        onDoubleClick={() => toggleMaximize(pacWindow.id)}
+        className={`flex shrink-0 items-center justify-between border-b border-white/20 px-3 ${
+          isMobile
+            ? 'h-12 bg-black/60 pt-2'
+            : 'h-10 cursor-grab bg-white/20 active:cursor-grabbing'
+        }`}
+        onPointerDown={!isMobile ? onDragPointerDown : undefined}
+        onPointerMove={!isMobile ? onDragPointerMove : undefined}
+        onPointerUp={!isMobile ? stopDrag : undefined}
+        onPointerCancel={!isMobile ? stopDrag : undefined}
+        onDoubleClick={!isMobile ? () => toggleMaximize(pacWindow.id) : undefined}
       >
         <div className="flex min-w-0 items-center gap-2">
-          <div className="h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
-          <h2 className="truncate font-mono text-xs font-semibold text-white uppercase tracking-wider">
+          {isMobile ? (
+            <button
+              type="button"
+              className="flex items-center gap-1 text-xs font-mono font-medium text-white/80 active:text-white"
+              onClick={() => closeWindow(pacWindow.id)}
+            >
+              <span className="text-sm">←</span> Back
+            </button>
+          ) : (
+            <div className="h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+          )}
+          <h2 className="truncate font-mono text-xs font-semibold text-white uppercase tracking-wider ml-1">
             {pacWindow.appId === 'imageViewer'
               ? (activeImage?.alt || pacWindow.title)
               : pacWindow.title}
@@ -162,44 +194,48 @@ export function WindowFrame({ window: pacWindow }: WindowFrameProps) {
         </div>
 
         <div className="flex items-center gap-1.5">
+          {!isMobile && (
+            <>
+              <button
+                type="button"
+                className="grid h-6 w-6 place-items-center rounded-[5px] text-white transition hover:bg-white/20"
+                onPointerDown={(event) => event.stopPropagation()}
+                onClick={() => minimizeWindow(pacWindow.id)}
+                aria-label={`Minimize ${pacWindow.title}`}
+                title="Minimize"
+              >
+                -
+              </button>
+              <button
+                type="button"
+                className="grid h-6 w-6 place-items-center rounded-[5px] text-white transition hover:bg-white/20"
+                onPointerDown={(event) => event.stopPropagation()}
+                onClick={() => toggleMaximize(pacWindow.id)}
+                aria-label={`${pacWindow.maximized ? 'Restore' : 'Maximize'} ${pacWindow.title}`}
+                title={pacWindow.maximized ? 'Restore' : 'Maximize'}
+              >
+                {pacWindow.maximized ? '▣' : '□'}
+              </button>
+            </>
+          )}
           <button
             type="button"
-            className="grid h-6 w-6 place-items-center rounded-[5px] text-white transition hover:bg-white/20"
-            onPointerDown={(event) => event.stopPropagation()}
-            onClick={() => minimizeWindow(pacWindow.id)}
-            aria-label={`Minimize ${pacWindow.title}`}
-            title="Minimize"
-          >
-            -
-          </button>
-          <button
-            type="button"
-            className="grid h-6 w-6 place-items-center rounded-[5px] text-white transition hover:bg-white/20"
-            onPointerDown={(event) => event.stopPropagation()}
-            onClick={() => toggleMaximize(pacWindow.id)}
-            aria-label={`${pacWindow.maximized ? 'Restore' : 'Maximize'} ${pacWindow.title}`}
-            title={pacWindow.maximized ? 'Restore' : 'Maximize'}
-          >
-            {pacWindow.maximized ? '▣' : '□'}
-          </button>
-          <button
-            type="button"
-            className="grid h-6 w-6 place-items-center rounded-[5px] text-white transition hover:bg-white/20 hover:text-red-400"
+            className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-white transition active:bg-white/30 hover:bg-white/20 hover:text-red-400"
             onPointerDown={(event) => event.stopPropagation()}
             onClick={() => closeWindow(pacWindow.id)}
             aria-label={`Close ${pacWindow.title}`}
             title="Close"
           >
-            x
+            ✕
           </button>
         </div>
       </div>
 
-      <div className="min-h-0 flex-1 overflow-hidden">
+      <div className="min-h-0 flex-1 overflow-auto">
         <AppWindowContent appId={pacWindow.appId} />
       </div>
 
-      {!pacWindow.maximized && (
+      {!isMobile && !pacWindow.maximized && (
         <div
           className="absolute bottom-0 right-0 h-5 w-5 cursor-nwse-resize"
           onPointerDown={onResizePointerDown}
